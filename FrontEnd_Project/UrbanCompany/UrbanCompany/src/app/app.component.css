@@ -1,0 +1,276 @@
+@media screen and (max-width:1000px) {
+    .navscroll
+    {
+        width: 0px;
+        height: 0px;
+        visibility: hidden;
+    }
+}
+.navscroll
+{
+    background-color: white; 
+    box-shadow:  0 2px 10px rgba(0,0,0,0.2);
+}
+#nav_a p
+{
+    color:black;
+}
+#nav_a img
+{
+    margin-left: 16px;
+}
+a
+{
+    text-decoration-line: none;
+}
+
+#login
+{
+    width: 50vh; height: 100%;
+}
+#login p
+{
+    float: right;
+}
+
+#signup
+{
+    width: 50vh; height: 100%;
+}
+
+#main_home_services_logo
+{
+    position:relative; 
+    top:-50px; 
+    border-radius:5px; 
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+}
+#best_offers_title , #cleaning_pest-control_title ,#appliances_title > p
+{
+    font-size: 20px;
+}
+.faded_para
+{
+    color: rgba(0,0,0,0.4);
+}
+.hr_class
+{
+    background-color: rgba(0,0,0,0.2);
+}
+
+.div_highlighted
+{
+    transition: 0.5s;
+}
+.div_highlighted:hover
+{
+    transform: scale(1.1);
+}
+
+/* first slider */
+
+        .carousel-container
+        {
+            width: 1200px;
+            min-height: 320px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .carousel-container .carousel-inner
+        {
+            width: 1150px;
+        }
+        .carousel-container .track
+        {
+            display: flex;
+            transition: 1.2s;
+        }
+
+        .carousel-container .card-container
+        {
+            width: fit-content;
+            height: fit-content;
+            margin: 10px;
+        }
+
+        .carousel-container .card-container .card
+        {
+            width: fit-content;
+            height: fit-content;
+        }
+
+        .carousel-container .card-container .card img
+        {
+            width: 266px;
+            height: 149px;
+            border-radius: 5px;
+        }
+        
+        .prev
+        {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            border: none;
+            position: relative;
+            bottom: 110px;
+            right: 15px;
+            background-color: rgb(255, 255, 255);
+            border: 1px thin black;
+            box-shadow: 0.5px 0.5px 5px rgb(0,0,0,0.5);
+
+        }
+        .next
+        {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            border: none;
+            position: relative;
+            bottom: 110px;
+            left: 1065px;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0.5px 0.5px 5px rgb(0,0,0,0.5);
+        }
+
+        
+
+        /* cleaning and pest control slider */
+
+        .carousel-container-clean-slider
+        {
+            width: 1190px;
+            min-height: fit-content;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .carousel-container-clean-slider .carousel-inner-clean-slider
+        {
+            width: 1140px;
+            overflow: hidden;
+        }
+        .carousel-container-clean-slider .track-clean-slider
+        {
+            display: flex;
+            transition: 1.2s;
+            
+        }
+
+        .carousel-container-clean-slider .card-container-clean-slider
+        {
+            width: fit-content;
+            height: fit-content;
+            margin: 10px;
+            
+        }
+
+        .carousel-container-clean-slider .card-container-clean-slider .card-clean-slider
+        {
+            width: fit-content;
+            height: fit-content;
+        }
+
+        .carousel-container-clean-slider .card-container-clean-slider .card-clean-slider img
+        {
+            width: 266px;
+            height: 149px;
+            border-radius: 5px;
+        }
+        
+        .prev-clean-slider
+        {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            border: none;
+            position: relative;
+            bottom: 110px;
+            right: 15px;
+            background-color: rgb(255, 255, 255);
+            border: 1px thin black;
+            box-shadow: 0.5px 0.5px 5px rgb(0,0,0,0.5);
+
+        }
+        .next-clean-slider
+        {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            border: none;
+            position: relative;
+            bottom: 110px;
+            left: 1053px;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0.5px 0.5px 5px rgb(0,0,0,0.5);
+        }
+
+
+
+/* customer review */
+
+.carousel-container-customerreview-slider
+{
+    width: 1190px;
+    min-height: fit-content;
+    margin: 50px auto;
+    padding: 20px;
+}
+.carousel-container-customerreview-slider .carousel-inner-customerreview-slider
+{
+    width: 1140px;
+    overflow: hidden;
+}
+.carousel-container-customerreview-slider .track-customerreview-slider
+{
+    display: flex;
+    transition: 1.2s;
+    
+}
+
+.carousel-container-customerreview-slider .card-container-customerreview-slider
+{
+    width: fit-content;
+    height: fit-content;
+    margin: 10px;
+    
+}
+
+.carousel-container-customerreview-slider .card-container-customerreview-slider .card-customerreview-slider
+{
+    width: fit-content;
+    height: fit-content;
+}
+
+.carousel-container-customerreview-slider .card-container-customerreview-slider .card-customerreview-slider img
+{
+    width: 266px;
+    height: 149px;
+    border-radius: 5px;
+}
+
+.prev-customerreview-slider
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    position: relative;
+    bottom: 110px;
+    right: 15px;
+    background-color: rgb(255, 255, 255);
+    border: 1px thin black;
+    box-shadow: 0.5px 0.5px 5px rgb(0,0,0,0.5);
+
+}
+.next-customerreview-slider
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    position: relative;
+    bottom: 110px;
+    left: 1053px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0.5px 0.5px 5px rgb(0,0,0,0.5);
+}

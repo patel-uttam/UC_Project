@@ -1,0 +1,29 @@
+<br>
+
+<div class="container ms-5 p-2">
+    <br>
+    <h3 class="ms-5 font-weight-bold">Profile</h3>
+    <br>
+    <form [formGroup]="provider_data" class="mx-auto">
+        <label for="name">userName</label>
+        <input id="name" type="text" class="form-control w-25" formControlName ="username">
+        <label for="email">UserEmail</label>
+        <input id="email" type="text" class="form-control w-25" formControlName ="email">
+        
+        <br><br>
+        <label for="fname">FirstName</label>
+        <input id="fname" type="text" class="form-control w-25" formControlName ="firstname">
+        <label for="lname">LastName</label>
+        <input id="lname" type="text" class="form-control w-25" formControlName ="lastname"> 
+        <label for="phone">PhoneNumber</label>
+        <input id="phone" type="number" class="form-control w-25" formControlName ="phone">
+        <label for="city">City</label>
+        <input id="city" type="text" class="form-control w-25" formControlName ="city">
+        <label for="district">District</label>
+        <input id="district" type="text" class="form-control w-25" formControlName ="district">
+        <label for="rating">Rating</label>
+        <input id="rating" type="text" class="form-control w-25" formControlName ="rating">
+        <label for="cty">Category</label>
+        <input id="cty" type="text" class="form-control w-25" formControlName ="category">
+    </form>
+</div>

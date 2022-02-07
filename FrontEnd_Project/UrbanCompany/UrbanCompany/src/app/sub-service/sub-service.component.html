@@ -1,0 +1,30 @@
+<div class="m-0 p-0 sticky-top">
+    <app-header></app-header>
+</div>
+<div >
+    <h2 class="py-2 text-center bg-secondary text-light">{{service_name}}</h2>
+    <br>
+    <div class="mx-1 p-1 bg-white" *ngFor="let X of subservices; index as i">
+        <div class="container-fluid m-0 p-2 bg-light row justify-content-between rounded">
+            <div class="col-auto m-2">
+                    <h4 class="font-italic mx-2 my-2">{{X.subServiceName}}</h4>
+                    <h5 class="mx-2 my-1">{{X.cost | currency:'INR':'symbol'}}</h5>
+    
+                        <!-- <div class="card">
+                            <div class="p-2 text-secondary bg-light card-body">
+                                    {{details[i]}}
+                            </div>
+                        </div> -->
+            </div>
+            <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
+                <button class="btn btn-dark mx-5" [disabled]="carts[i].qty < 1" (click)="Add_to_cart(i)">Add Service</button>
+                <button id="qty_min" class="btn btn-dark" [disabled]="carts[i].qty < 1" (click)="MinQty(i)">-</button>&nbsp;
+                <div class="align-self-center">{{carts[i].qty}}</div>&nbsp;
+                <button id="qty_max" class="btn btn-dark" [disabled]="carts[i].qty > 2" (click)="MaxQty(i)">+</button>
+            </div>
+        </div>
+        <hr *ngIf=" i < (subservices.length)-1" class="m-0 p-0">
+    </div>
+</div>
+
+

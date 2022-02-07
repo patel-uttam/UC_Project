@@ -1,0 +1,79 @@
+<div class="m-0 p-0">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container">
+            <a routerLink="/Service-Provider"><img class="navbar-brand" style="height: 50px; width:fit-content;" src="../../assets/Images/main_home_logo_dark.png" alt="UC_logo"></a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#nav_option">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="nav_option" class="collapse navbar-collapse justify-content-end">
+                <ul class=" text-light navbar-nav" type="none">
+                    <a routerLink="" class="m-2 nav-link text-dark" id="profile">Book Service</a>
+                    <a class="m-2 nav-link text-dark" id="login_logout">About Us</a>
+                    <a class="m-2 nav-link text-dark" data-toggle="modal" data-target="#form">Sign Up Here</a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container-fluid m-0 p-0 row" style="background-color: rgba(135, 207, 235, 0.288); height: fit-content; width: 100%;">
+
+    <div class="container col-lg-6 col-md-auto col-sm-12 p-2 text-center align-self-center">
+        <h1 class="display-5">Earn More. Earn Respect. Safety Ensured.</h1>
+        <p class="display-4">{{totalprovider}}+ Partners join Us Since now</p>
+    </div>
+    <div class="container col-lg-6 col-md-auto col-sm-12 text-center align-self-center">
+        <img src="../../../assets/Images/Register_Provider.png" alt="">
+    </div>
+    <div class="container-fluid col-12 m-0 p-2 bg-primary text-center align-self-center">
+    </div>
+</div>
+<div class="container-fluid text-center py-5 bg-white">
+    <h2>Join UrbanCompany to change your life</h2>
+    <p>Urban Company is an app-based marketplace that empowers professionals like you to become your own boss</p>
+    <div class="container mx-auto row justify-content-center align-item-center">
+        <div class="col-lg-auto col-sm-12 align-self-center " style="background-image: url(../../../assets/Images/total_Provider_count.svg); background-position: center; background-repeat: no-repeat;"> 
+            <h3 class="pt-2 display-4 text-success">{{totalprovider}}+</h3>
+            <p class="h4 align-self-end">partners On board</p>
+        </div>&nbsp;
+        <div class="col-lg-auto col-sm-12 align-self-center " style="background-image: url(../../../assets/Images/dollar_sign.svg); background-position: center; background-repeat: no-repeat;"> 
+            <h3 class="pt-2 display-4 text-success">{{totalpaid | currency:'INR':'symbol':'5.0'}}+</h3>
+            <p class="h4 align-self-end">Paid to Partners</p>
+        </div>&nbsp;
+        <div class="col-lg-auto col-sm-12 align-self-center " style="background-image: url(../../../assets/Images/total_service_provided_bg.svg); background-position: center; background-repeat: no-repeat;"> 
+            <h3 class="pt-2 display-4 text-success">{{totaldelivered}}+</h3>
+            <p class="h4 align-self-end">Service delivered</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- sign Up Modal -->
+
+    <div id="form" class="modal mx-auto">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Sign Up As a Provider</h3>
+                    <button class="btn" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid my-2 mx-auto" >
+                        <h4 id="SignUp_error" class="container-fluid alert alert-danger"></h4>
+                        <div id="SignUp_F" class="container-fluid mx-auto my-5">
+                            <Form [formGroup]="SignupForm" (ngSubmit)="Signup()">
+                                <label for="user">UserName</label><br>
+                                <input type="text" class="form-control" formControlName="UserName"><br>
+                                <label for="user">Phone Number</label><br>
+                                <input type="number" class="form-control" formControlName="PhoneNumber"><br>
+                                <label for="user">Email</label><br>
+                                <input type="email" class="form-control" formControlName="Email"><br>
+                                <label for="user">PassWord</label><br>
+                                <input type="password" class="form-control" formControlName="PassWord"><br>
+                                <button type="submit" class="btn btn-success" [disabled]="SignupForm.invalid">Sign Up</button>
+                            </Form>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

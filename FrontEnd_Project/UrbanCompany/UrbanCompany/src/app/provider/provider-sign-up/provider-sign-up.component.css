@@ -1,0 +1,14 @@
+#form
+{
+    vertical-align: middle;
+}
+#form .modal-dialog
+{
+    display: flex;
+    vertical-align: middle;
+}
+#form .modal-dialog .modal-content
+{
+    vertical-align: middle;
+}
+

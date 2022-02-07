@@ -1,0 +1,326 @@
+<div class="m-0 p-0 sticky-top">
+    <app-header></app-header>
+</div>
+
+<div class="m-0 p-0">
+    <h2 class="p-1 text-center bg-secondary text-light">Order Services</h2>
+    <br>
+    <div class="my-1">
+        <div class="container-fluid">
+            <!-- Salon_For_Women -->
+            <div class="p-1 rounded">
+                <b>Salon For Women</b>
+            <div class="mb-3 px-3 bg-light rounded" *ngFor="let X of Salon_For_Women_1; index as i">
+                <div class="row justify-content-between">
+                    <div class="col-auto">
+                        <h5 class="my-2">{{X.subService}}</h5>
+                        <p class="my-1">From service <b>{{X.service}}</b></p>
+                        <p class="m-0">order for <b>{{X.qty}}</b> </p>
+                        <p class="m-0">cost <b>{{X.cost*X.qty}}</b> </p>
+                    </div>
+                    <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
+                        <button class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_cart(X)">Order</button>&nbsp;
+                        <button id="qty_max" class="btn btn-danger" (click)="Remove_service(X.cartId)">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button id="Salon_For_Women_1" class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_carts(Salon_For_Women_1)">Order All(Salon For Women)</button>
+            </div>
+            <br>
+            <hr>
+            <!--  -->
+
+            <!-- Hair_Services_For_Women -->
+            <div class="p-1 rounded">
+                <b>Hair_Services_For_Women</b>
+                <div class="mb-3 px-3 bg-light rounded" *ngFor="let X of Hair_Services_For_Women_2; index as i">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="my-2">{{X.subService}}</h5>
+                            <p class="my-1">From service <b>{{X.service}}</b></p>
+                            <p class="m-0">order for <b>{{X.qty}}</b> </p>
+                            <p class="m-0">cost <b>{{X.cost*X.qty}}</b> </p>
+                        </div>
+                        <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_cart(X)">Order</button>&nbsp;
+                            <button id="qty_max" class="btn btn-danger" (click)="Remove_service(X.cartId)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="Hair_Services_For_Women_2" class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_carts(Hair_Services_For_Women_2)">Order All(Hair Services For Women)</button>
+            <br>
+            <hr>
+            <!--  -->
+
+            <!-- Salon_For_Men -->
+            <div class="p-1 rounded">
+                <b>Salon_For_Men</b>
+                <div class="mb-3 px-3 bg-light rounded" *ngFor="let X of Salon_For_Men_3; index as i">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="my-2">{{X.subService}}</h5>
+                            <p class="my-1">From service <b>{{X.service}}</b></p>
+                            <p class="m-0">order for <b>{{X.qty}}</b> </p>
+                            <p class="m-0">cost <b>{{X.cost*X.qty}}</b> </p>
+                        </div>
+                        <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_cart(X)">Order</button>&nbsp;
+                            <button id="qty_max" class="btn btn-danger" (click)="Remove_service(X.cartId)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="Salon_For_Men_3" class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_carts(Salon_For_Men_3)">Order All(Salon For Men)</button>
+            <br>
+            <hr>
+            <!--  -->
+
+            <!-- Spa_For_Women -->
+            <div class="p-1 rounded">
+                <b>Spa_For_Women</b>
+                <div class="mb-3 px-3 bg-light rounded" *ngFor="let X of Spa_For_Women_4; index as i">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="my-2">{{X.subService}}</h5>
+                            <p class="my-1">From service <b>{{X.service}}</b></p>
+                            <p class="m-0">order for <b>{{X.qty}}</b> </p>
+                            <p class="m-0">cost <b>{{X.cost*X.qty}}</b> </p>
+                        </div>
+                        <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_cart(X)">Order</button>&nbsp;
+                            <button id="qty_max" class="btn btn-danger" (click)="Remove_service(X.cartId)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="Spa_For_Women_4" class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_carts(Spa_For_Women_4)">Order All(Spa For Women)</button>
+            <br>
+            <hr>
+            <!--  -->
+
+            <!-- Massage_For_Men -->
+            <div class="p-1 rounded">
+                <b>Massage_For_Men</b>
+                <div class="mb-3 px-3 bg-light rounded" *ngFor="let X of Massage_For_Men_5; index as i">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="my-2">{{X.subService}}</h5>
+                            <p class="my-1">From service <b>{{X.service}}</b></p>
+                            <p class="m-0">order for <b>{{X.qty}}</b> </p>
+                            <p class="m-0">cost <b>{{X.cost*X.qty}}</b> </p>
+                        </div>
+                        <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_cart(X)">Order</button>&nbsp;
+                            <button id="qty_max" class="btn btn-danger" (click)="Remove_service(X.cartId)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="Massage_For_Men_5" class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_carts(Massage_For_Men_5)">Order All(Massage For Men)</button>
+            <br>
+            <hr>
+            <!--  -->
+
+            <!-- Applicants -->
+            <div class="p-1 rounded">
+                <b>Applicants</b>
+                <div class="mb-3 px-3 bg-light rounded" *ngFor="let X of Applicants_6; index as i">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="my-2">{{X.subService}}</h5>
+                            <p class="my-1">From service <b>{{X.service}}</b></p>
+                            <p class="m-0">order for <b>{{X.qty}}</b> </p>
+                            <p class="m-0">cost <b>{{X.cost*X.qty}}</b> </p>
+                        </div>
+                        <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_cart(X)">Order</button>&nbsp;
+                            <button id="qty_max" class="btn btn-danger" (click)="Remove_service(X.cartId)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="Applicants_6" class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_carts(Applicants_6)">Order All(Applicants)</button>
+            <br>
+            <hr>
+            <!--  -->
+
+            <!-- Plumbers -->
+            <div class="p-1 rounded">
+                <b>Plumbers</b>
+                <div class="mb-3 px-3 bg-light rounded" *ngFor="let X of Plumbers_7; index as i">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="my-2">{{X.subService}}</h5>
+                            <p class="my-1">From service <b>{{X.service}}</b></p>
+                            <p class="m-0">order for <b>{{X.qty}}</b> </p>
+                            <p class="m-0">cost <b>{{X.cost*X.qty}}</b> </p>
+                        </div>
+                        <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_cart(X)">Order</button>&nbsp;
+                            <button id="qty_max" class="btn btn-danger" (click)="Remove_service(X.cartId)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="Plumbers_7" class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_carts(Plumbers_7)">Order All(Plumbers)</button>
+            <br>
+            <hr>
+            <!--  -->
+
+            <!-- Electricians -->
+            <div class="p-1 rounded">
+                <b>Electricians</b>
+                <div class="mb-3 px-3 bg-light rounded" *ngFor="let X of Electricians_8; index as i">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="my-2">{{X.subService}}</h5>
+                            <p class="my-1">From service <b>{{X.service}}</b></p>
+                            <p class="m-0">order for <b>{{X.qty}}</b> </p>
+                            <p class="m-0">cost <b>{{X.cost*X.qty}}</b> </p>
+                        </div>
+                        <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_cart(X)">Order</button>&nbsp;
+                            <button id="qty_max" class="btn btn-danger" (click)="Remove_service(X.cartId)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="Electricians_8" class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_carts(Electricians_8)">Order All(Electricians)</button>
+            <br>
+            <hr>
+            <!--  -->
+
+            <!-- Carpenters -->
+            <div class="p-1 rounded">
+                <b>Carpenters</b>
+                <div class="mb-3 px-3 bg-light rounded" *ngFor="let X of Carpenters_9; index as i">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="my-2">{{X.subService}}</h5>
+                            <p class="my-1">From service <b>{{X.service}}</b></p>
+                            <p class="m-0">order for <b>{{X.qty}}</b> </p>
+                            <p class="m-0">cost <b>{{X.cost*X.qty}}</b> </p>
+                        </div>
+                        <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_cart(X)">Order</button>&nbsp;
+                            <button id="qty_max" class="btn btn-danger" (click)="Remove_service(X.cartId)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="Carpenters_9" class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_carts(Carpenters_9)">Order All(Carpenters)</button>
+            <br>
+            <hr>
+            <!--  -->
+
+            <!-- Pest_Control -->
+            <div class="p-1 rounded">
+                <b>Pest_Control</b>
+                <div class="mb-3 px-3 bg-light rounded" *ngFor="let X of Pest_Control_10; index as i">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="my-2">{{X.subService}}</h5>
+                            <p class="my-1">From service <b>{{X.service}}</b></p>
+                            <p class="m-0">order for <b>{{X.qty}}</b> </p>
+                            <p class="m-0">cost <b>{{X.cost*X.qty}}</b> </p>
+                        </div>
+                        <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_cart(X)">Order</button>&nbsp;
+                            <button id="qty_max" class="btn btn-danger" (click)="Remove_service(X.cartId)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="Pest_Control_10" class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_carts(Pest_Control_10)">Order All(Pest Control)</button>
+            <br>
+            <hr>
+            <!--  -->
+
+            <!-- Cleaning -->
+            <div class="p-1 rounded">
+                <b>Cleaning</b>
+                <div class="mb-3 px-3 bg-light rounded" *ngFor="let X of Cleaning_11; index as i">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="my-2">{{X.subService}}</h5>
+                            <p class="my-1">From service <b>{{X.service}}</b></p>
+                            <p class="m-0">order for <b>{{X.qty}}</b> </p>
+                            <p class="m-0">cost <b>{{X.cost*X.qty}}</b> </p>
+                        </div>
+                        <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_cart(X)">Order</button>&nbsp;
+                            <button id="qty_max" class="btn btn-danger">R(click)="Remove_service(X.cartId)"emove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="Cleaning_11" class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_carts(Cleaning_11)">Order All(Cleaning)</button>
+            <br>
+        </div>
+    </div>
+</div>
+
+
+<!--  date time picker-->
+<div class="modal mt-5" id="date_time">
+    <div class="modal-dialog">
+        <div class="modal-content p-1">
+            <div class="modal-body">
+                <div class="container text-center">
+                    <h4 class="text-info">Order Summary</h4>
+                </div>
+                <br>
+                <div class="container" *ngFor="let X of order_cart">
+                    <h5>{{X.subService}}</h5>
+                    <p>{{X.cost*X.qty | currency:'INR'}}</p>
+                </div>
+                <hr>
+                <div class="px-3 row justify-content-between">
+                    <p>Convenience Fee</p>
+                    <p>{{convenience_fee | currency:'INR':'symbol'}}</p>
+                </div>
+                <div class="px-3 row justify-content-between">
+                    <p>Total</p>
+                    <p>{{total_bill | currency:'INR':'symbol'}}</p>
+                </div>
+                <hr class="container-fluid px-0 py-2 hr_class">
+                <br>
+                <b>Pick Date & time</b>
+                <form class="mt-2 form" [formGroup]="Date_Time_Form">
+                    <label for="select_date">Date</label> <input id="select_date" type="date" class="form-control " formControlName="date"><br>
+                    <label for="select_time">convenient Time</label><input id="select_time" type="time" class="form-control " formControlName="time">
+                </form>
+
+                <br>
+
+                <div class="container row justify-content-around">
+                    <button class="btn btn-danger w-25 " data-dismiss="modal">close</button>
+                    <button class="btn btn-success w-25 " [disabled]="Date_Time_Form.invalid" (click)="OrderServices(order_cart)">Confirm</button>
+                </div>
+            </div>
+            <!-- <div class="modal-footer justify-content-end"> -->
+                <!-- <div class="row justify-content-between">
+                    <button class="btn btn-secondary w-25 align-self-center" data-dismiss="modal">close</button>
+                    <button class="btn btn-primary w-25 align-self-center" [disabled]="Date_Time_Form.invalid">Confirm</button>
+                </div> -->
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+<br>
+
+<!-- 
+    Salon_For_Women_1
+Hair_Services_For_Women_2
+Salon_For_Men_3
+Spa_For_Women_4
+Massage_For_Men_5
+Applicants_6
+Plumbers_7
+Electricians_8
+Carpenters_9
+Pest_Control_10
+Cleaning_11
+ -->

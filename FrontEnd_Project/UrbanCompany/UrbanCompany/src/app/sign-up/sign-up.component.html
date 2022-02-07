@@ -1,0 +1,17 @@
+<div>
+    <h4 id="SignUp_error" class="container alert alert-danger"></h4>
+    <div id="SignUp_F" class="container mx-auto my-5 w-50">
+        <h3>Sign Up To Continue..</h3>
+        <Form [formGroup]="SignupForm" (ngSubmit)="Signup()">
+            <label for="user">UserName</label><br>
+            <input type="text" class="form-control" formControlName="UserName"><br>
+            <label for="user">Phone Number</label><br>
+            <input type="number" class="form-control" formControlName="PhoneNumber"><br>
+            <label for="user">Email</label><br>
+            <input type="email" class="form-control" formControlName="Email"><br>
+            <label for="user">PassWord</label><br>
+            <input type="password" class="form-control" formControlName="PassWord"><br>
+            <button type="submit" class="btn btn-success" [disabled]="SignupForm.invalid">Sign Up</button>
+        </Form>
+    </div>
+</div>

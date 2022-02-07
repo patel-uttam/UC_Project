@@ -1,0 +1,538 @@
+
+<div class="m-0 p-0">
+    <nav class="navscroll  navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div class="container-fluid d-flex justify-content-around ">
+          <div class="container form-group mx-5 px-5 p-0 d-flex justify-content-center flex-wrap" >
+            <div class="bg-white d-flex p-0 mt-0 w-75 rounded" >
+              <i class="bi bi-search mt-0 p-2 bg--white"></i>
+              <input type="text" class="form-control border-left-0 border-right-0 border-top-0 border-bottom-0 p-2 h-100 " placeholder="Search for Services........">
+              </div>
+          </div>
+          <div class="container mx-auto navbar-nav ">
+              <div class=" nav_item navbar-item me-5 pt-0 m-0 d-flex flex-column justify-content-center">
+                  <a id="nav_a" href="" class="align-self-center">
+                      <img class="align-self-center" src="../../assets/Images/main_home_header_img1.png" alt="" width="28px" height="28px">
+                      <p class="align-self-center">Sallon For Women</p>
+                  </a>
+              </div>
+              <div class=" nav_item navbar-item me-5 pt-0 m-0 d-flex flex-column justify-content-center">
+                  <a id="nav_a" href="" class="align-item-center">
+                      <img class="" src="../../assets/Images/main_home_header_img2.png" alt="" width="28px" height="28px">
+                      <p class="align-self-center">Spa For Women</p>
+                  </a>
+              </div>
+              <div class=" nav_item navbar-item me-5 pt-0 m-0 d-flex flex-column justify-content-center">
+                  <a id="nav_a" href="" class="align-item-center">
+                      <img class="" src="../../assets/Images/main_home_header_img5.png" alt="" width="28px" height="28px">
+                      <p class="align-self-center">Salon For Men</p>
+                  </a>
+              </div>
+              <div class=" nav_item navbar-item me-5 pt-0 m-0 d-flex flex-column justify-content-center">
+                  <a id="nav_a" href="" class="align-item-center">
+                      <img class="" src="../../assets/Images/main_home_header_img3.png" alt="" width="28px" height="28px">
+                      <p class="align-self-center">Massage For Men</p>
+                  </a>
+              </div>
+              <div class=" nav_item navbar-item me-5 pt-0 m-0 d-flex flex-column justify-content-center">
+                  <a id="nav_a" href="" class="align-item-center">
+                      <img class="" src="../../assets/Images/main_home_header_img4.png" alt="" width="28px" height="28px">
+                      <p class="align-self-center">Massage</p>
+                  </a>
+              </div>
+              <div class=" nav_item navbar-item me-5 pt-0 m-0 d-flex flex-column justify-content-center btn text-primary " style="width: 50px; height: 50px; border-radius: 50%; background-color: rgba(0,0,0,0.2);">
+                  <a href="#main_home_services_logo"><p class="pt-3 align-self-center" style="font-size: 25px;">+7</p></a>
+              </div>
+          </div>                
+      </div>
+  </nav>
+
+
+  <!-- opening page view header -->
+  <div class="row">
+      <div class="m-0 p-0" style="background-image:url(./assets/Images/main_home_background.jpeg); height: 80vh; width: 100%; background-size: cover;">
+          <div style="background-image: linear-gradient(180deg,rgba(0,0,0,0.2),rgba(0,0,0,0.8)); height: 80vh; width: 100%; background-size: cover;">
+              <div class="container-fliud pt-2 mx-0">
+                  <header class="container">
+                      <div class="pl-5">
+                          <nav class="navbar navbar-expand-md navbar-dark">
+                              <div class="container">
+  
+                                  <img class="navbar-brand" style="height: 50px; width:fit-content;" src="../../assets/Images/main_home_logo.png" alt="UC_logo">
+                                  <button class="navbar-toggler" data-toggle="collapse" data-target="#nav_option">
+                                      <span class="navbar-toggler-icon"></span>
+                                  </button>
+                                  <div id="nav_option" class="collapse navbar-collapse justify-content-end">
+                                      <ul class=" text-light navbar-nav" type="none">
+                                        <a routerLink="/Booking" class="m-2 text-light navbar-item"id="booking">My Booking</a>
+                                        <a routerLink="/OrderService" class="m-2 text-light navbar-item"id="cart">Order Service</a>
+                                        <a routerLink="/Profile" class="m-2 text-light navbar-item" id="profile">Profile</a>
+                                        <a routerLink="/{{link}}" class="m-2 text-light navbar-item" (click)="Login_Logout()" id="login_logout">Login/Sign up</a>
+                                        <a routerLink="/RegisterAsProvider" class="m-2 text-light navbar-item">Register As A Professional</a>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </nav>
+                      </div>
+                  </header>
+                  <section class="pt-5 mt-5 d-flex justify-content-center">
+                      <div class="">
+                          <ol class="d-flex text-light">
+                              <a href="" class="text-light"><span>Home</span></a>
+                              <span>&nbsp; / &nbsp;</span>
+                              <a href="" class="text-light"><span>Ahmedabad</span></a>
+                          </ol>
+                      </div>
+                  </section>
+                  <section class="d-flex justify-content-center text-light">
+                      <h1>Home services, on demand.</h1>
+                  </section> 
+                  <section class=" container">
+                      <div class="d-flex row justify-content-center m-auto">
+                          <div id="location_display" class="bg-white p-1 mb-3 d-flex align-self-center rounded">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            
+                            <!-- <select id="State" name="State" class="py-3 form-control border-left-0 border-top-0 border-right-0 border-bottom-0 " [(ngModel)]="data">
+                                <option value="">--Select--</option>
+                                <option value="1" >Vadodar</option>
+                                <option value="2">Ahmedabad</option>
+                                <option value="3">Mehsana</option>
+                                <option value="4">Rajkot</option>
+                            </select>&nbsp;
+                            <select id="C" name="Location" class="py-3 form-control border-left-0 border-top-0 border-right-0 border-bottom-0 " [(ngModel)]="data">
+                                <option value="">--Select--</option>
+                                <option value="1" >Vadodar</option>
+                                <option value="2">Ahmedabad</option>
+                                <option value="3">Mehsana</option>
+                                <option value="4">Rajkot</option>
+                            </select> -->
+                            
+                          </div>
+
+                          &nbsp;
+                          <div class="col-lg-6 col-12 ms-2 mt-2">
+                              <div class="container m-0 p-0 d-flex justify-content-center" >
+                                  <div class="bg-white d-flex p-0 mt-0 w-100 rounded" >
+                                  <i class="bi bi-search mt-0 p-2 bg--white"></i>
+                                  <input type="text" class="form-control border-left-0 border-right-0 border-top-0 border-bottom-0 p-2 h-100 " placeholder="Search for Services........">
+                                  </div>                
+                                </div>
+                              <div>
+                                  <ul class="d-flex text-light m-0 pl-0" type="none">
+                                  <li><a href="" class="text-light">Plumbers</a></li> &nbsp; , &nbsp;
+                                  <li><a href="" class="text-light">Carpenters</a></li> &nbsp; , &nbsp;
+                                  <li><a href="" class="text-light">Pest Control</a></li>&nbsp;
+                                  <span>etc..</span>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>  
+                  </section>
+              </div>
+          </div> 
+      </div>
+  </div>
+  <!-- Services icons  -->
+  <div class="container">
+      <div class="container p-5 bg-light" id="main_home_services_logo">
+          <div class="container row justify-content-evenly flex-wrap">
+              <div class="col-lg-2 col-md-4 col-sm-6 ">
+                  <div>
+                      <a routerLink="../Salon For Women" class="d-flex flex-column justify-content-center">
+                          <img src="../../assets/Images/main_home_services_women_salon_logo.png" alt="" style="width: 50px; height: 50px;" class="bg-light align-self-center">
+                          <p class="text-normal align-self-center text-dark">Salon For Women</p>
+                      </a>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-md-4 col-sm-6 ">
+                  <div>
+                      <a routerLink="../Salon For Women" class="d-flex flex-column justify-content-center">
+                          <img src="../../assets/Images/main_home_services_Massage for Women_logo.png " alt="" style="width: 50px; height: 50px;" class="bg-light align-self-center">
+                          <p class="text-normal align-self-center text-dark">Massage For Women</p>
+                      </a>                                                          
+                  </div>
+              </div>
+  
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                  <div>
+                      <a routerLink="../Salon For Women" class="d-flex flex-column justify-content-center">
+                          <img src="../../assets/Images/main_home_services_men_salon_logo.png" alt="" style="width: 50px; height: 50px;" class="bg-light align-self-center">
+                          <p class="text-normal align-self-center text-dark">Salon For Men</p>
+                      </a>
+                  </div>
+              </div>
+  
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                  <div>
+                      <a routerLink="../Salon For Women" class="d-flex flex-column justify-content-center">
+                          <img src="../../assets/Images/main_home_services_Massage for men_logo.png" alt="" style="width: 50px; height: 50px;" class="bg-light align-self-center">
+                          <p class="text-normal align-self-center text-dark">Massage For Men</p>
+                      </a>                                                      
+                  </div>
+              </div>
+  
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                  <div>
+                      <a routerLink="../Salon For Women" class="d-flex flex-column justify-content-center">
+                          <img src="../../assets/Images/main_home_services_ac repair and service_logo.png" alt="" style="width: 50px; height: 50px;" class="bg-light align-self-center">
+                          <p class="text-normal align-self-center text-dark">Ac Service & Repair</p>
+                      </a>                                                                                     
+                  </div>
+              </div>
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                  <div>
+                      <a routerLink="../Salon For Women" class="d-flex flex-column justify-content-center" data-toggle="modal" data-target="#services_icon_appliance">
+                          <img src="../../assets/Images/main_home_services_appliance repair_logo.png" alt="" style="width: 50px; height: 50px;" class="bg-light align-self-center">
+                          <p class="text-normal align-self-center text-dark">Appliance Repair</p>
+                      </a>                                                                                     
+                  </div>
+              </div>
+  
+              <div class="col-lg-2 col-md-4 col-sm-6 ">
+                  <div>
+                      <a routerLink="../Salon For Women" class="d-flex flex-column justify-content-center">
+                          <img src="../../assets/Images/main_home_services_home painting_logo.png" alt="" style="width: 50px; height: 50px;" class="bg-light align-self-center">
+                          <p class="text-normal align-self-center text-dark">Home Painting</p>
+                      </a>                                                               
+                  </div>
+              </div>
+              <div class="col-lg-2 col-md-4 col-sm-6 ">
+                  <div>
+                      <a routerLink="../Salon For Women" class="d-flex flex-column justify-content-center">
+                          <img src="../../assets/Images/main_home_services_cleaning and disinfaction_logo.png " alt="" style="width: 50px; height: 50px;" class="bg-light align-self-center">
+                          <p class="text-normal align-self-center text-dark">Cleaning & Disinfection</p>
+                      </a>
+                                                                                   
+                  </div>
+              </div>
+  
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                  <div>
+                      <a routerLink="../Salon For Women" class="d-flex flex-column justify-content-center">
+                          <img src="../../assets/Images/main_home_services_electricians_logo" alt="" style="width: 50px; height: 50px;" class="bg-light align-self-center">
+                          <p class="text-normal align-self-center text-dark">Electricians</p>
+                      </a> 
+                  </div>
+              </div>
+  
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                  <div>
+                      <a routerLink="../Salon For Women" class="d-flex flex-column justify-content-center">
+                          <img src="../../assets/Images/main_home_services_plumbers and carpenters_logo.png" alt="" style="width: 50px; height: 50px;" class="bg-light align-self-center">
+                          <p class="text-normal align-self-center text-dark">Plumbers & Carpenters</p>
+                      </a> 
+                  </div>
+              </div>
+  
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                  <div>
+                      <a routerLink="../Salon For Women" class="d-flex flex-column justify-content-center">
+                          <img src="../../assets/Images/main_home_services_ro repair and service_logo.png" alt="" style="width: 50px; height: 50px;" class="bg-light align-self-center">
+                          <p class="text-normal align-self-center text-dark">RO Service & Repair</p>
+                      </a>                                                               
+                  </div>
+              </div>
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                  <div>
+                      <a routerLink="../Salon For Women" class="d-flex flex-column justify-content-center">
+                          <img src="../../assets/Images/main_home_services_pest control_logo.png" alt="" style="width: 50px; height: 50px;" class="bg-light align-self-center">
+                          <p class="text-normal align-self-center text-dark">Pest Control</p>    
+                      </a>                                                                                     
+                  </div>
+              </div>
+  
+          </div>  
+      </div>
+  </div>
+  
+  
+  
+  <!-- offer slider -->
+  <div class="carousel-container container mx-auto ">
+      <div class="carousel-inner">
+          <div class="track">
+              <div class="card-container">
+                  <div class="card div_highlighted">
+                      <img src="../../assets/Images/main_home_first_slider_image1.png" alt="" >
+                  </div>
+              </div>
+              <div class="card-container">
+                  <div class="card div_highlighted">
+                      <img src="../../assets/Images/main_home_first_slider_image2.jpeg" alt="" >
+                  </div>
+              </div>
+              <div class="card-container">
+                  <div class="card div_highlighted">
+                      <img src="../../assets/Images/main_home_first_slider_image3.jpeg" alt="" >
+                  </div>
+              </div>
+              <div class="card-container">
+                  <div class="card div_highlighted">
+                      <img src="../../assets/Images/main_home_first_slider_image4.png" alt="" >
+                  </div>
+              </div>
+              <div class="card-container">
+                  <div class="card div_highlighted">
+                      <img src="../../assets/Images/main_home_first_slider_image5.jpeg" alt="" >
+                  </div>
+              </div>
+              <div class="card-container">
+                  <div class="card div_highlighted">
+                      <img src="../../assets/Images/main_home_first_slider_image6.png" alt="" >
+                  </div>
+              </div>
+              <div class="card-container">
+                  <div class="card div_highlighted">
+                      <img src="../../assets/Images/main_home_first_slider_image7.png" alt="" >
+                  </div>
+              </div>
+              <div class="card-container">
+                  <div class="card div_highlighted">
+                      <img src="../../assets/Images/main_home_first_slider_image8.jpeg" alt="" >
+                  </div>
+              </div>
+              <div class="card-container">
+                  <div class="card div_highlighted">
+                      <img src="../../assets/Images/main_home_first_slider_image9.png" alt="" >
+                  </div>
+              </div>
+              <div class="card-container">
+                  <div class="card div_highlighted">
+                      <img src="../../assets/Images/main_home_first_slider_image10.jpeg" alt="" >
+                  </div>
+              </div>
+              <div class="card-container">
+                  <div class="card div_highlighted">
+                      <img src="../../assets/Images/main_home_first_slider_image11.png" alt="" >
+                  </div>
+              </div>
+  
+          </div>
+      </div>
+      <div class="nav">
+          <button class="prev"><i class="far fa-arrow-left"></i></button>
+          <button class="next"><i class="far fa-arrow-right"></i></button>
+      </div>
+  </div>
+  
+  
+  
+  <!-- -->
+  <hr class="container-fliud py-2 m-0 hr_class">
+  <!-- add 1 -->
+  <div class="container-fluid m-0 p-0">
+      <!-- <hr class="bg-dark h-100"> -->
+      <div class="container-fluid m-0 p-0">
+          <img src="../../assets/Images/main_home_advertisement_11.jpeg" alt="main_home_advertisement_1" width="1500px" height="fit-content">
+      </div>
+  </div>
+  <hr class="container-fluid py-2 m-0 hr_class">
+  <!-- add 2 -->
+  <div class="container-fluid m-0 p-0">
+      <!-- <hr class="bg-dark h-100"> -->
+      <div class="container-fluid m-0 p-0">
+          <img src="../../assets/Images/main_home_advertisement_1.jpeg" alt="main_home_advertisement_1" width="1530px" height="fit-content">
+      </div>
+  </div>
+  
+  <!-- best offers -->
+  
+  <div class="container-fluid my-5 pt-5">
+     <div class="container-fluid" id="best_offers">
+          <div class="d-flex flex-column mb-5" id="best_offers_title">
+              <h2 class="align-self-center">Best Offers</h2>
+              <p class="align-self-center faded_para">Hygenic & single-use products | low-cost services</p>
+          </div>
+          <div class="container-fluid py-3 m-0 ">
+              <div class="container">
+                  <div class="d-flex flex-wrap justify-content-evenly m-auto">
+                      <div class=" d-flex flex-column mx-2 div_highlighted">
+                          <img src="../../assets/Images/main_home_best offer_1.jpeg"style="border-radius: 5px;" alt="" width="260px" height="149px">
+                          <b class="mt-3 align-self-center">Salon At Home For Women</b>
+                          <p class="align-self-center faded_para">Free Waxing</p>
+                      </div>
+                      <div class=" d-flex flex-column mx-2 div_highlighted" >
+                          <img src="../../assets/Images/main_home_best offer_2.jpeg"style="border-radius: 5px;" alt="" width="260px" height="149px">
+                          <b class="mt-3 align-self-center">Bathroom Cleaning</b>
+                          <p class="align-self-center faded_para">Upto 30% off</p>
+                      </div>
+                      <div class=" d-flex flex-column mx-2 div_highlighted" >
+                          <img src="../../assets/Images/main_home_best offer_3.jpg" style="border-radius: 5px;"alt="" width="260px" height="149px">
+                          <b class="mt-3 align-self-center">Massage Therapy For Women</b>
+                          <p class="align-self-center faded_para">Free Head Massage</p>
+                      </div>
+                      <div class=" d-flex flex-column mx-2 div_highlighted" >
+                          <img src="../../assets/Images/main_home_best offer_4.jpeg" style="border-radius: 5px;"alt="" width="260px" height="149px">
+                          <b class="mt-3 align-self-center">Salon For Men</b>
+                          <p class="align-self-center faded_para">Flat ₹100 off</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+     </div> 
+  </div>
+  
+  <hr class="container-fluid py-2 hr_class">
+  
+  
+  <!-- cleaning and pest control--> <!-- slider -->
+  <div class="container-fluid my-5 pt-5">
+      <div class="container-fluid" id="cleaning_pest-control">
+           <div class="d-flex flex-column" id="cleaning_pest-control_title">
+               <h2 class="align-self-center">Cleaning & Pest Control</h2>
+               <p class="align-self-center faded_para">Removes hard stains & more</p>
+           </div>        
+      </div> 
+      <div class="carousel-container-clean-slider container mx-auto ">
+          <div class="carousel-inner-clean-slider">
+              <div class="track-clean-slider">
+                  <div class="card-container-clean-slider">
+                      <div class="card-clean-slider div_highlighted">
+                          <img src="../../assets/Images/main_home_cleaning and pest_slider_image0.jpeg" alt="" >
+                      </div>
+                  </div>
+                  <div class="card-container-clean-slider">
+                      <div class="card-clean-slider div_highlighted">
+                          <img src="../../assets/Images/main_home_cleaning and pest_slider_image1.png" alt="" >
+                      </div>
+                  </div>
+                  <div class="card-container-clean-slider">
+                      <div class="card-clean-slider div_highlighted">
+                          <img src="../../assets/Images/main_home_cleaning and pest_slider_image2.jpeg" alt="" >
+                      </div>
+                  </div>
+                  <div class="card-container-clean-slider">
+                      <div class="card-clean-slider div_highlighted">
+                          <img src="../../assets/Images/main_home_cleaning and pest_slider_image4.jpg" alt="" >
+                      </div>
+                  </div>
+                  <div class="card-container-clean-slider">
+                      <div class="card-clean-slider div_highlighted">
+                          <img src="../../assets/Images/main_home_cleaning and pest_slider_image5.jpeg" alt="" >
+                      </div>
+                  </div>
+              </div>
+  
+          </div>
+          <div class="nav-clean-slider">
+              <button class="prev-clean-slider"><i class="far fa-arrow-left"></i></button>
+              <button class="next-clean-slider"><i class="far fa-arrow-right"></i></button>
+          </div>
+      </div>
+  </div>
+  
+   <hr class="container-fluid py-2 hr_class">
+  
+       <!-- Appliances -->
+  
+  <div id="Appliance" class="container-fluid my-5 pt-5">
+      <div class="container-fluid" id="appliances">
+           <div class="d-flex flex-column mb-5" id="appliances_title">
+               <h2 class="align-self-center">Appliances</h2>
+               <p class="align-self-center faded_para">Servicing, Repair,Installation & Uninstallation</p>
+           </div>
+           <div class="container-fluid py-3 px-0 m-0 ">
+               <div class="container">
+                   <div class="d-flex flex-wrap justify-content-evenly m-auto">
+                       <div class="d-flex flex-column div_highlighted  mx-2 ">
+                           <img src="../../assets/Images/main_home_appliances_1.jpg"style="border-radius: 5px;" alt="" width="260px" height="149px">
+                           <b class="mt-3 align-self-center">Air Conditioner</b>
+                           <p class="align-self-center faded_para">Upto 30% Off</p>
+                       </div>
+                       <div class="d-flex flex-column div_highlighted  mx-2 ">
+                           <img src="../../assets/Images/main_home_appliances_2.jpg"style="border-radius: 5px;" alt="" width="260px" height="149px">
+                           <b class="mt-3 align-self-center">Refrigerator</b>
+                           <p class="align-self-center faded_para"></p>
+                       </div>
+                       <div class="d-flex flex-column div_highlighted  mx-2 ">
+                           <img src="../../assets/Images/main_home_appliances_3.jpg" style="border-radius: 5px;"alt="" width="260px" height="149px">
+                           <b class="mt-3 align-self-center">Water Purifier</b>
+                           <p class="align-self-center faded_para">Upto 45% Off</p>
+                       </div>
+                       <div class="d-flex flex-column div_highlighted  mx-2 ">
+                           <img src="../../assets/Images/main_home_appliances_4.jpg" style="border-radius: 5px;"alt="" width="260px" height="149px">
+                           <b class="mt-3 align-self-center">Washing Machine</b>
+                           <p class="align-self-center faded_para"></p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+      </div> 
+  </div>
+  
+  
+  <hr class="container-fluid py-2 hr_class">
+      <!-- customer review--> <!-- slider -->
+      <div class="container-fluid my-5 pt-5">
+          <div class="container-fluid" id="cleaning_pest-control">
+               <div class="d-flex flex-column" id="cleaning_pest-control_title">
+                   <h2 class="align-self-center">Customer safety is our priority</h2>
+                   <p class="align-self-center faded_para">What customers are saying about our safety standards</p>
+               </div>        
+          </div> 
+          <div class="carousel-container-customerreview-slider container mx-auto ">
+              <div class="carousel-inner-customerreview-slider">
+                  <div class="track-customerreview-slider">
+                      <div class="card-container-customerreview-slider">
+                          <div class="card-customerreview-slider div_highlighted">
+                              <img src="../../assets/Images/main_home_customer_review1.png" alt="" >
+                          </div>
+                      </div>
+                      <div class="card-container-customerreview-slider">
+                          <div class="card-customerreview-slider div_highlighted">
+                              <img src="../../assets/Images/main_home_customer_review2.png" alt="" >
+                          </div>
+                      </div>
+                      <div class="card-container-customerreview-slider">
+                          <div class="card-customerreview-slider div_highlighted">
+                              <img src="../../assets/Images/main_home_customer_review3.png" alt="" >
+                          </div>
+                      </div>
+                      <div class="card-container-customerreview-slider">
+                          <div class="card-customerreview-slider div_highlighted">
+                              <img src="../../assets/Images/main_home_customer_review4.png" alt="" >
+                          </div>
+                      </div>
+                      <div class="card-container-customerreview-slider">
+                          <div class="card-customerreview-slider div_highlighted">
+                              <img src="../../assets/Images/main_home_customer_review5.png" alt="" >
+                          </div>
+                      </div>
+                      <div class="card-container-customerreview-slider">
+                          <div class="card-customerreview-slider div_highlighted">
+                              <img src="../../assets/Images/main_home_customer_review6.png" alt="" >
+                          </div>
+                      </div>
+                  </div>
+      
+              </div>
+              <div class="nav-customerreview-slider">
+                  <button class="prev-customerreview-slider"><i class="far fa-arrow-left"></i></button>
+                  <button class="next-customerreview-slider"><i class="far fa-arrow-right"></i></button>
+              </div>
+          </div>
+      </div>
+  
+      <hr class="container-fluid py-2 hr_class">
+  
+  <!-- insurance add  -->
+  <div class="container-fluid m-0 p-0">
+      <!-- <hr class="bg-dark h-100"> -->
+      <div class="container-fluid m-0 p-0">
+          <img src="../../assets/Images/main_home_insurance_advertisement.png" alt="main_home_advertisement_1" width="1530px" height="fit-content">
+      </div>
+  </div>
+  
+  <hr class="container-fluid py-2 hr_class">
+  
+  <!-- skill india add -->
+  
+  <div class="container-fluid m-0 p-0">
+      <!-- <hr class="bg-dark h-100"> -->
+      <div class="container-fluid m-0 p-0">
+          <img src="../../assets/Images/main_home_skill_india_advertisement.png" alt="main_home_advertisement_1" width="1530px" height="fit-content">
+      </div>
+  </div>
+  
+  <hr class="container-fluid py-2 hr_class">
+  
+</div>

@@ -1,0 +1,28 @@
+<div class="m-0 p-0 sticky-top">
+    <app-header></app-header>
+</div>
+<br>
+<div class="container ms-5 p-2">
+    <br>
+    <h3 class="ms-5 font-weight-bold">Profile</h3>
+    <br>
+    <form [formGroup]="customer_data" class="mx-auto">
+        <label for="name">userName</label>
+        <input id="name" type="text" class="form-control w-25" formControlName ="username">
+        <label for="email">UserEmail</label>
+        <input id="email" type="text" class="form-control w-25" formControlName ="email">
+        
+        <br><br>
+         
+        <label for="phone">PhoneNumber</label>
+        <input id="phone" type="number" class="form-control w-25" formControlName ="phone">
+        <label for="address">AddressLine</label>
+        <input id="address" type="text" class="form-control w-25" formControlName ="address">
+        <label for="city">City</label>
+        <input id="city" type="text" class="form-control w-25" formControlName ="city">
+        <label for="district">District</label>
+        <input id="district" type="text" class="form-control w-25" formControlName ="district">
+        <br>
+        <button class="btn btn-success" [disabled]="!(this.customer_data.valid && this.customer_data.dirty)" (click)="Update_Customer()">Update</button>
+    </form>
+</div>

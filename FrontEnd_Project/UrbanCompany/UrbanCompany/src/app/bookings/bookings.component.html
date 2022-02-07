@@ -1,0 +1,29 @@
+<div class="m-0 p-0">
+    <app-header></app-header>
+</div>
+<div class="m-0 p-0">
+    
+    <div class="row mx-auto my-3 justify-content-center text-center">
+        <h3 class="m-5">My Booking</h3>
+        <div class="col-12 row d-flex justify-content-center">
+            <div class="container mx-auto w-25 list-group">
+                <a class="list-group-item list-group-item-action active " data-toggle="list" href="#h1_1">ONGOING</a>
+                    <p class="text-center m-0 p-0">OR</p>
+                <a class="list-group-item list-group-item-action " data-toggle="list" href="#h1_2">HISTORY</a>
+            </div>
+        </div>
+        <div class="col-12 my-5 p-0">
+            <div class="tab-content" id="div_tabcontent">
+                <div class="tab-pane show active" id="h1_1" role="tabpanel">
+                    <div class="container-fluid p-2 bg-light" *ngFor="let order of ongoing_order; index as i">
+                        
+                    </div>
+                </div>
+                <div class="tab-pane show" id="h1_2" role="tabpanel">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
