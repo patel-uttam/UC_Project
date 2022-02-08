@@ -1,0 +1,9 @@
+.checked
+{
+    color: rgba(0, 128, 0, 0.925);    
+}
+
+.unchecked
+{
+    color:rgba(0, 0, 0, 0.336);
+}

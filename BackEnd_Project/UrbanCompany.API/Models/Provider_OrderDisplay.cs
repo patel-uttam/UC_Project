@@ -9,11 +9,14 @@ namespace UrbanCompany.API.Models
     {
         public int AssignOrderId { get; set; }
         public int OrderId { get; set; }
+        public string CustomerName { get; set; }
         public string CustomerPhone { get; set; }
         public string Service { get; set; }
         public string SubService { get; set; }
         public string ServiceDate { get; set; }
         public string ServiceTime { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
         public int Qty { get; set; }
     }
 }

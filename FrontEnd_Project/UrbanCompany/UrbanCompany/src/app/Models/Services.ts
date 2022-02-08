@@ -4,7 +4,7 @@ export interface service
     serviceName:string;
     categoryId:number;
     category:null;
-        carts:[],
-        orderHistories:[],
-        subServices:[]   
+    carts:[],
+    orderHistories:[],
+    subServices:[]   
 }

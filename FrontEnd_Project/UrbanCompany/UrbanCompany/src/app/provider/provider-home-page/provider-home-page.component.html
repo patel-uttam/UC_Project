@@ -1,1 +1,70 @@
-<p>provider-home-page works!</p>
+<div class="m-0 p-0">
+    <app-provider-header></app-provider-header>
+</div>
+<div class="container-fluid mx-auto pb-5 row">
+    <div class="col-md-8 col-sm-12 pt-3">
+        <div class="list-group w-25">
+            <a class=" btn btn-priamry text-center list-group-item list-group-item-action" data-toggle="list" href="#assign_service"><p class="row justify-content-around">Assign Services <span class="badge badge-primary">{{orders.length}}</span></p></a>
+        </div>
+        <br>
+        <div class="tab-content">
+            <div id="assign_service" class="tab-pane show" role="tabpanel">
+                <div class="m-0" *ngFor="let order of orders; index as i">
+                    <div class="card tab-pane m-o" role="tabpanel">
+                        <div class="card-header container m-0 p-1">
+                            <p> order <b>{{order.orderId}}</b></p>
+                        </div>
+                        <div class="card-body container m-0 p-1 row ">
+                            <div class="col-lg-7 col-md-12 container">
+                                <h5>To : {{order.customerName}}</h5>
+                                <p>{{order.service}}</p>
+                                <p>{{order.subService}}</p>
+                            </div>
+                            <div class="col-lg-5 col-md-12">
+                                <p>Address : {{order.address}}</p>
+                                <p>OnDate : {{order.serviceDate}}</p>
+                                <p>OnTime : {{order.serviceTime}}</p>
+                            </div>
+                        </div>
+                        <div class="card-footer container m-0 px-3 py-1 row justify-content-end">
+                            <button class="btn btn-success " (click)="order_complete">Order Complete</button>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-12 container mx-auto mt-5 pt-2">
+        <h4>Rating & Reviews</h4>
+        <div class="container pt-1 px-1 row d-flex justify-content-center">
+            <br>
+            <p class="display-4 text-center">{{rating}}</p>
+            <div class=" mt-2 pt-1">
+                <div class="px-3">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star unchecked"></span>
+                    <span class="fa fa-star unchecked"></span>
+                </div>
+                <div class="m-0 p-0 row d-flex">
+                    <h5 class="text-secondary">/ 5</h5>
+                    &nbsp;
+                    <p class="text-secondary">OverAll Rating</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container px-1">
+            <div class="m-0">
+                <div class="card" *ngFor="let r of review_array">
+                    <div class="card-body">
+                        <h5>{{r.customer}}</h5>
+                        <p>{{r.review}}</p>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>

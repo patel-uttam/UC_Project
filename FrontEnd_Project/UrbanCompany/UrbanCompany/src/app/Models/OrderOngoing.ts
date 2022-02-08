@@ -1,13 +1,13 @@
 export interface OrderOngoing
 {
-    OrderOngoingId:number;
-    OrderId:number;
-    Customer:number;
-    Provider:number;
-    Service:number;
-    SubService:number
-    date:string;
-    time:string;
-    cost:number;
-    qty:number;
+    orderOngoingId:number | null;
+    orderId:number | null;
+    customer:number | null;
+    provider:number | null;
+    service:number | null;
+    subService:number
+    date:string | null;
+    time:string | null;
+    cost:number | null;
+    qty:number | null;
 }

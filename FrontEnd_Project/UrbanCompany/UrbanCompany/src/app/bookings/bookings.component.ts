@@ -13,9 +13,6 @@ export class BookingsComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    this.data.data1="asdfgh";
-    this.data.data2="zxcvbb";
-
     this.order_service.GetOnGoingOrder().subscribe
     (
       (Response)=>
@@ -25,7 +22,7 @@ export class BookingsComponent implements OnInit {
           console.log(oo as OrderDisplay);
           this.ongoing_order.push(oo);          
         }
-        console.log(this.ongoing_order[1].customer);
+        console.log(this.ongoing_order);
 
       },
       (error)=>
@@ -57,7 +54,6 @@ export class BookingsComponent implements OnInit {
   ongoing_order:OrderDisplay[]=[];
   history_order:OrderDisplay[]=[];
 
-  data={data1:"",data2:""};
 
   //
 }

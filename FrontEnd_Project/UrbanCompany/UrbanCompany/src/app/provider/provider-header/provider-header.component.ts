@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthServiceService } from 'src/app/Services/auth-service.service';
 
 @Component({
   selector: 'app-provider-header',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProviderHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth_service : AuthServiceService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+
   }
 
+  // variables and object
+
+  
+
+  // //
+
+  // function
+  LogOut()
+  {
+    this.auth_service.LogOut();
+    
+  }
+
+  // //
 }

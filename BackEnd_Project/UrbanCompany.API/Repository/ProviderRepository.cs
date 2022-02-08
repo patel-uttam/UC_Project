@@ -57,7 +57,7 @@ namespace UrbanCompany.API.Repository
         // To Fetch Order Assigned to Provider
         public IEnumerable<Provider_OrderDisplay> Order_Assign_Provider(int provider_id)
         {
-            var orders = context.OrderOngoings.Where(og => og.Provider == provider_id);
+            var orders = context.OrderOngoings.Where(og => og.Provider == provider_id).ToList();
 
             IList<Provider_OrderDisplay> provider_OrderDisplays = new List<Provider_OrderDisplay>();
 
@@ -67,11 +67,14 @@ namespace UrbanCompany.API.Repository
 
                 order.AssignOrderId = o.OrderOngoingId;
                 order.OrderId = o.OrderId;
+                order.CustomerName = context.Customers.FirstOrDefault(c => c.CustomerId == o.Customer).CustomerName;
                 order.CustomerPhone = context.Customers.FirstOrDefault(c => c.CustomerId == o.Customer).CustomerPhone;
                 order.Service = context.Services.FirstOrDefault(s=>s.ServiceId == o.Service).ServiceName;
                 order.SubService = context.SubServices.FirstOrDefault(ss => ss.SubServiceId == o.SubService).SubServiceName;
                 order.ServiceDate = o.ServiceDate;
                 order.ServiceTime = o.ServiceTime;
+                order.Address = context.Customers.FirstOrDefault(c => c.CustomerId == o.Customer).CustomerAddress1;
+                order.City = context.Customers.FirstOrDefault(c => c.CustomerId == o.Customer).CustomerCity;
                 order.Qty = o.Qty;
 
                 provider_OrderDisplays.Add(order);

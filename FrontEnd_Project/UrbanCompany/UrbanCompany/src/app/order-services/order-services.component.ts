@@ -95,7 +95,7 @@ export class OrderServicesComponent implements OnInit {
 
   // variables and object
 
-  carts:CartDisplay[] = []; 
+  carts:CartDisplay[] = [];
 
   // category wise cart
   Salon_For_Women_1:CartDisplay[] = [];
