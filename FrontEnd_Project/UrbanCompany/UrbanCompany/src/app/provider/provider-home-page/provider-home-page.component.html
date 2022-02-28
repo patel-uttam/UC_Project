@@ -4,7 +4,8 @@
 <div class="container-fluid mx-auto pb-5 row">
     <div class="col-md-8 col-sm-12 pt-3">
         <div class="list-group w-25">
-            <a class=" btn btn-priamry text-center list-group-item list-group-item-action" data-toggle="list" href="#assign_service"><p class="row justify-content-around">Assign Services <span class="badge badge-primary">{{orders.length}}</span></p></a>
+            <a class="p-1 btn btn-priamry text-center list-group-item list-group-item-action w-75" data-toggle="list" href="#assign_service"><p class="m-0 p-0 row justify-content-around ">Assign Services <span class="badge badge-primary align-self-center">{{orders.length}}</span></p></a>
+            <a class="p-1 btn btn-priamry text-center list-group-item list-group-item-action w-75" data-toggle="list" href="#completed_service"><p class="m-0 p-0 row justify-content-around ">Mark Order Complete</p></a>
         </div>
         <br>
         <div class="tab-content">
@@ -26,8 +27,23 @@
                                 <p>OnTime : {{order.serviceTime}}</p>
                             </div>
                         </div>
-                        <div class="card-footer container m-0 px-3 py-1 row justify-content-end">
-                            <button class="btn btn-success " (click)="order_complete">Order Complete</button>
+                        <!-- <div class="card-footer container m-0 px-3 py-1 row justify-content-end">
+                            <button class="btn btn-success " (click)="order_complete(order)">Order Complete</button>
+                        </div> -->
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div id="completed_service" class="tab-pane show" role="tabpanel">
+                <div class="m-0" *ngFor="let orderid of OrderIds; index as i">
+                    <div class="card tab-pane m-o w-50" role="tabpanel">
+                        <div class="card-body container m-0 p-1 row d-flex">
+                            <div class="col-lg-7 col-md-12 container">
+                                <h5>Orders with OrderId : {{orderid}}</h5>
+                            </div>
+                            <div class="col-lg-5 col-md-12 container">
+                                <button class="btn btn-success" (click)="order_complete(orderid)">Order Complete</button>
+                            </div>
                         </div>
                     </div>
                     <br>
@@ -42,11 +58,16 @@
             <p class="display-4 text-center">{{rating}}</p>
             <div class=" mt-2 pt-1">
                 <div class="px-3">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star unchecked"></span>
-                    <span class="fa fa-star unchecked"></span>
+                    <span *ngIf="rating >= 1" class=" fa fa-star checked"></span>
+                    <span *ngIf="rating < 1" class=" fa fa-star unchecked"></span>
+                    <span *ngIf="rating >= 2" class=" fa fa-star checked"></span>
+                    <span *ngIf="rating < 2" class=" fa fa-star unchecked"></span>
+                    <span *ngIf="rating >= 3" class=" fa fa-star checked"></span>
+                    <span *ngIf="rating < 3" class=" fa fa-star unchecked"></span>
+                    <span *ngIf="rating >= 4" class=" fa fa-star checked"></span>
+                    <span *ngIf="rating < 4" class=" fa fa-star unchecked"></span>
+                    <span *ngIf="rating >= 5" class=" fa fa-star checked"></span>
+                    <span *ngIf="rating < 5" class=" fa fa-star unchecked"></span>
                 </div>
                 <div class="m-0 p-0 row d-flex">
                     <h5 class="text-secondary">/ 5</h5>
@@ -58,10 +79,10 @@
         <br>
         <div class="container px-1">
             <div class="m-0">
-                <div class="card" *ngFor="let r of review_array">
-                    <div class="card-body">
-                        <h5>{{r.customer}}</h5>
-                        <p>{{r.review}}</p>
+                <div class="card" *ngFor="let R of review_array">
+                    <div class="container card-body p-1">
+                        <p class="mx-4">{{R.review}}</p>
+                        <h5 class="fa fa-star checked text-success"> {{R.rating}}</h5>
                     </div>
                 </div>
             </div>            

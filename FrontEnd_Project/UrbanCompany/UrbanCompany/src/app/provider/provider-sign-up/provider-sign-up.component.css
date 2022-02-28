@@ -12,3 +12,15 @@
     vertical-align: middle;
 }
 
+#SgnUp_error
+{
+    visibility: hidden;
+}
+#otp_F
+{
+    visibility: hidden;
+}
+#SignUp_success
+{
+    visibility: hidden;
+}

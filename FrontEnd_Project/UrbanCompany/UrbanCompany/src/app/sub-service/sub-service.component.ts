@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen';
 
 import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
 import { AuthGuard } from '../Guards/auth.guard';
@@ -29,20 +30,16 @@ export class SubServiceComponent implements OnInit {
       {
         this.count = this.subservices.length;
         this.subservices=Response as subservice[];
-        
         console.log(this.subservices);
 
         for(var ss of this.subservices)
         {
-
           this.cart.service = ss.serviceId;
           this.cart.subservice = ss.subServiceId;
           this.cart.cost = ss.cost;
           this.cart.qty = 0;
-
           this.carts.push(this.cart);
           this.cart = {"customer":0,"service":0,"subservice":0,"cost":0,"qty":0};
-          
         }
 
       },
@@ -52,15 +49,15 @@ export class SubServiceComponent implements OnInit {
       }
     )
 
-    this.details.push
-    (
-      ["Waxing : Full arms(chocolate) + underarms(honey),Full legs chocolate"]
-    )
-    this.details.push
-    (
-      ["'Waxing' : Full arms(chocolate) + underarms(honey),Full legs chocolate"]
-    )
+    // cloudinary
 
+    let cloudinary_image = new Cloudinary(
+      {
+        cloud:{cloudName:'urbancompanyclone'}
+      }
+    );
+    // instantiate a cloudinary image with image's publicId 
+    this.img = cloudinary_image.image('Categories/main_home_services_women_salon_logo_png.png').toURL();
   }
 
   // variables and object define
@@ -78,8 +75,7 @@ export class SubServiceComponent implements OnInit {
     cust_data = JSON.parse(this.data);
 
     details:string[][]=[];
-
-
+    img: string = "";
   //
 
 
@@ -99,6 +95,7 @@ export class SubServiceComponent implements OnInit {
           (Response)=>
           {
             console.log("AddtoCart" , Response);
+            alert("Service added to cart");
           },
           (error)=>
           {

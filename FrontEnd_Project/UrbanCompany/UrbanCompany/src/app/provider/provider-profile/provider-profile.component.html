@@ -10,22 +10,64 @@
         <label for="name">userName</label>
         <input id="name" type="text" class="form-control w-25" formControlName ="username">
         <label for="email">UserEmail</label>
-        <input id="email" type="text" class="form-control w-25" formControlName ="email">
-        
-        <br><br>
+        <input id="email" type="email" class="form-control w-25" formControlName ="email">
+        <label for="phone">PhoneNumber</label>
+        <input id="phone" type="number" class="form-control w-25" formControlName ="phone">
         <label for="fname">FirstName</label>
         <input id="fname" type="text" class="form-control w-25" formControlName ="firstname">
         <label for="lname">LastName</label>
-        <input id="lname" type="text" class="form-control w-25" formControlName ="lastname"> 
-        <label for="phone">PhoneNumber</label>
-        <input id="phone" type="number" class="form-control w-25" formControlName ="phone">
-        <label for="city">City</label>
-        <input id="city" type="text" class="form-control w-25" formControlName ="city">
-        <label for="district">District</label>
-        <input id="district" type="text" class="form-control w-25" formControlName ="district">
-        <label for="rating">Rating</label>
-        <input id="rating" type="text" class="form-control w-25" formControlName ="rating">
-        <label for="cty">Category</label>
-        <input id="cty" type="text" class="form-control w-25" formControlName ="category">
+        <input id="lname" type="text" class="form-control w-25" formControlName ="lastname">
+
+        <br><br>
+        <div class="container card mx-0 p-1">
+            <p class="card-header">Service Address</p>
+            <div class="container card-body">
+                <div class="container-fliud">
+                    <div class="row d-flex justify-content-around">
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="country">Country</label>
+                            <select id="country" class="form-control w-50" formControlName ="country" (change)="OnChangeCountry($event)">
+                            
+                                <option *ngFor="let C of countries" [ngValue]="C">{{C.countryName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="state">State</label>
+                            <select id="state" class="form-control w-50" formControlName ="state" (change)="OnChangeState($event)">
+                            
+                                <option *ngFor="let S of states" [ngValue]="S">{{S.stateName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="city">City</label>
+                            <select id="city" class="form-control w-50" formControlName ="city" (change)="OnChangeCity($event)">
+                            
+                                <option *ngFor="let C of cities" [ngValue]="C">{{C.cityName}}</option>
+                            </select>                        
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="area">Locality</label>
+                            <select id="area" type="text" class="form-control w-50" formControlName ="area">
+                            
+                                <option *ngFor="let A of areas" value="{{A.areaName}}">{{A.areaName}}</option>
+                            </select>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        <br>
+        <label for="category">Category</label>
+        <select id="category" class="form-control w-25" formControlName ="category" >
+            <option *ngFor="let C of categories" value="{{C.categoryId}}">{{C.categoryName}}</option>
+        </select>
+        <br>
+        <label for="status">Are You Available ?</label>
+        <select id="status" class="form-control w-25" formControlName ="avabillity_status" >
+            <option [ngValue]="true">Yes</option>
+            <option [ngValue]="false">No</option>
+        </select>
+        <br>
+        <button class="btn btn-success" [disabled]="!(this.provider_data.valid && this.provider_data.dirty)" (click)="Update_Provider()">Update</button>
     </form>
 </div>

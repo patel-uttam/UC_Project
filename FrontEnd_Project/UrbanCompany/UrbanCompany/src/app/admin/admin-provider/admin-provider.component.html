@@ -1,0 +1,140 @@
+<div class="container-fluid mx-auto my-3 p-1">
+    <div class="card container mx-auto p-0 border-left-0 border-top-0 border-right-0 border-bottom-0">
+        <button class="mb-2 btn btn-light"><a class="nav-link" routerLink="/RegisterAsProvider">Add New Provider</a></button>
+        <div class="card-body p-0" *ngFor="let P of providers; index as i">
+            <div class="card ">
+                <div class="card-header container-fluid ps-3 py-1">
+                    <h4>ID : {{P.providerId}}</h4>
+                </div>
+                <div class="card-body row">
+                    <div class="col-10">
+                        <div>
+                            <div class="card ">
+                                <div class="card-header p-1">
+                                    Account
+                                </div>
+                                <div class="card-body row justify-content-between">
+                                    <p><b>provider-UserName : </b>{{P.userName}}</p>&nbsp;
+                                </div>
+                            </div>
+                            <br>
+                            <div class="card ">
+                                <div class="card-header p-1">
+                                    Personal Info
+                                </div>
+                                <div class="card-body row justify-content-between">
+                                    <p><b>provider-Name : </b>{{P.firstName}} {{P.lastName}}</p>
+                                    <p><b>provider-Email : </b>{{P.providerEmail}}</p>&nbsp;
+                                    <p><b>provider-Phone : </b>{{P.providerPhone}}</p>&nbsp;        
+                                </div>
+                            </div>
+                            <br>
+                            <div class="card ">
+                                <div class="card-header p-1">
+                                    Service Address
+                                </div>
+                                <div class="card-body row justify-content-between">
+                                    <p><b>provider-Area : </b>{{P.providerArea}}</p>&nbsp;
+                                    <p><b>provider-City : </b>{{P.providerCity}}</p>&nbsp;
+                                    <p><b>provider-State : </b>{{P.providerState}}</p>&nbsp;
+                                    <p><b>provider-Country : </b>{{P.providerCountry}}</p>&nbsp;
+                                </div>    
+                            </div>
+                            <br>
+                            <div class="card ">
+                                <div class="card-header p-1">
+                                    others
+                                </div>
+                                <div class="card-body row justify-content-between">
+                                    <p><b>provider-Rating : </b>{{P.rating}}</p>&nbsp;
+                                    <p><b>provider-Category : </b>{{P.category}}</p>&nbsp;    
+                                </div>    
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col-2 row justify-content-end align-self-center">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#form_modal" (click)="Set_Form(P)">Update</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+
+    <!-- model for update -->
+    <div id="form_modal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container">
+                        <br>
+                        <h3 class="ms-5 font-weight-bold">Profile</h3>
+                        <br>
+                        <form [formGroup]="provider_data" class="mx-auto">
+                            <label for="name">userName</label>
+                            <input id="name" type="text" class="form-control" formControlName ="username">
+                            <label for="email">UserEmail</label>
+                            <input id="email" type="email" class="form-control" formControlName ="email">
+                            
+                            <br><br>
+                            <div class="container card mx-0 p-1">
+                                <p class="card-header">Service Address</p>
+                                <div class="container card-body">
+                                    <div class="container-fliud">
+                                        <div class="row d-flex justify-content-around">
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="country">Country</label>
+                                                <select id="country" class="form-control w-50" formControlName ="country" (change)="OnChangeCountry($event)">
+                                                
+                                                    <option *ngFor="let C of countries" [ngValue]="C">{{C.countryName}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="state">State</label>
+                                                <select id="state" class="form-control w-50" formControlName ="state" (change)="OnChangeState($event)">
+                                                
+                                                    <option *ngFor="let S of states" [ngValue]="S">{{S.stateName}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="city">City</label>
+                                                <select id="city" class="form-control w-50" formControlName ="city" (change)="OnChangeCity($event)">
+                                                
+                                                    <option *ngFor="let C of cities" [ngValue]="C">{{C.cityName}}</option>
+                                                </select>                        
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="area">Locality</label>
+                                                <select id="area" type="text" class="form-control w-50" formControlName ="area">
+                                                
+                                                    <option *ngFor="let A of areas" value="{{A.areaName}}">{{A.areaName}}</option>
+                                                </select>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <label for="category">Category</label>
+                            <select id="category" class="form-control w-25" formControlName ="category" >
+                                <option *ngFor="let C of categories" value="{{C.categoryId}}">{{C.categoryName}}</option>
+                            </select>
+                            <br>
+                            <label for="status">Are You Available ?</label>
+                            <select id="status" class="form-control w-25" formControlName ="avabillity_status" >
+                                <option [ngValue]="true">Yes</option>
+                                <option [ngValue]="false">No</option>
+                            </select>
+                            <br>
+                            <div class="row justify-content-end">
+                                <button class="btn btn-danger" data-dismiss="modal">close</button>&nbsp;
+                                <button class="btn btn-success" data-dismiss="modal" [disabled]="!(this.provider_data.valid && this.provider_data.dirty)" (click)="Update_Provider()">Update</button>    
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>

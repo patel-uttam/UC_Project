@@ -4,6 +4,8 @@ import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { AuthServiceService } from '../Services/auth-service.service';
 import { Login } from '../Models/login';
 import { CustomerService } from '../Services/customer.service';
+import { Customer } from '../Models/Customer';
+import { AddressDisplay } from '../Models/AddressDisplay';
 
 
 @Component({
@@ -18,6 +20,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    if(localStorage.getItem("Jwt") != null)
+    {
+      this.router.navigate(['']);
+    }
+
     let unauth =  document.querySelector("#login_unauth") as HTMLElement;
     unauth.style.visibility=`hidden`;
   }
@@ -34,13 +41,6 @@ export class LoginComponent implements OnInit {
   
   Login()
   {
-    if(localStorage.getItem("Jwt") != null)
-    {
-      
-    }
-    else
-    {
-
       if(this.loginForm.valid)
       {
         let values = this.loginForm.value;
@@ -69,10 +69,26 @@ export class LoginComponent implements OnInit {
                 (Response)=>
                 {
                    const cust_data:object= {
-                    CustomerId : (<any>Response).customerId,
-                    CustomerName : (<any>Response).customerName,
+                    CustomerId : (Response as Customer).customerId,
+                    CustomerName : (Response as Customer).customerName,
                   }
-                  localStorage.setItem("data",JSON.stringify(cust_data));
+                  localStorage.setItem("data", JSON.stringify(cust_data));
+                  
+                  // to store user addresses
+
+                  let locations:AddressDisplay[]=[]
+
+                  let location = {addressLine:(Response as Customer).customerAddress1 , area : (Response as Customer).customerArea1 , city :(Response as Customer).customerCity1 , state : (Response as Customer).customerState1 ,country : (Response as Customer).customerCountry} as AddressDisplay
+                  locations.push(location);
+                  
+                  if((Response as Customer).customerAddress2 != null && (Response as Customer).customerArea2 != null)
+                  {
+                    location = {addressLine:(Response as Customer).customerAddress2 , area : (Response as Customer).customerArea2 , city :(Response as Customer).customerCity2 , state : (Response as Customer).customerState2 ,country : (Response as Customer).customerCountry} as AddressDisplay
+                  
+                    locations.push(location);  
+                  }
+                  localStorage.setItem("location" , JSON.stringify(locations));
+
                 }
               )
               this.router.navigate(['']);
@@ -102,5 +118,4 @@ export class LoginComponent implements OnInit {
         this.loginForm.reset();
       }
     }
-  }
 }

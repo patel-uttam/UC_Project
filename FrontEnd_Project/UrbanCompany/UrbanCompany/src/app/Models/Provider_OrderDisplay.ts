@@ -9,6 +9,5 @@ export interface Provider_OrderDisplay
     serviceDate: string | null; 
     serviceTime: string | null;
     address: string | null;
-    city: string | null;
     qty: number | null; 
 }

@@ -6,12 +6,19 @@
             <label for="user">UserName</label><br>
             <input type="text" class="form-control" formControlName="UserName"><br>
             <label for="user">Phone Number</label><br>
-            <input type="number" class="form-control" formControlName="PhoneNumber"><br>
+            <input type="number" maxlength="10" class="form-control" formControlName="PhoneNumber"><br>
             <label for="user">Email</label><br>
             <input type="email" class="form-control" formControlName="Email"><br>
             <label for="user">PassWord</label><br>
             <input type="password" class="form-control" formControlName="PassWord"><br>
             <button type="submit" class="btn btn-success" [disabled]="SignupForm.invalid">Sign Up</button>
         </Form>
+    </div>
+    <div id="otp_F" class="container my-5 p-3 mx-auto w-50 fixed-top">
+        <h5>Verification Code is Sent to your email {{data.email}}</h5>
+        <form [formGroup]="EmailOtpForm">
+            <input id="otp" type="number" class="form-control w-25" formControlName="otp"><br>
+            <button class="btn btn-success" [disabled]="EmailOtpForm.invalid" (click)="verifyemail()">Verify OTP</button>
+        </form>
     </div>
 </div>

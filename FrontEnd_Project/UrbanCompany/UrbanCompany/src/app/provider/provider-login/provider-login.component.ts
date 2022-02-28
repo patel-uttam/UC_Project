@@ -2,7 +2,6 @@ import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/Models/login';
-import { Provider } from 'src/app/Models/Provider';
 import { AuthServiceService } from 'src/app/Services/auth-service.service';
 import { ProviderService } from 'src/app/Services/provider.service';
 

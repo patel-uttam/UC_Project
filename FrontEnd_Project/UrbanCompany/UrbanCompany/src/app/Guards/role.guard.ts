@@ -30,8 +30,7 @@ export class RoleGuard implements CanActivate {
       }
       else
       {
-        alert("Athorization is failed...");
-        this.router.navigate([]);
+        this.router.navigate(['Unauth-Access']);
         return false;
       }
       

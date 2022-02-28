@@ -7,14 +7,18 @@
     <div class="mx-1 p-1 bg-white" *ngFor="let X of subservices; index as i">
         <div class="container-fluid m-0 p-2 bg-light row justify-content-between rounded">
             <div class="col-auto m-2">
+                <div class="m-1 p-0 ">
+                    <img src="{{img}}" alt="img" style="width: 84px; height: 54px; border-radius: 5px;">
+                </div>  
                     <h4 class="font-italic mx-2 my-2">{{X.subServiceName}}</h4>
-                    <h5 class="mx-2 my-1">{{X.cost | currency:'INR':'symbol'}}</h5>
-    
-                        <!-- <div class="card">
-                            <div class="p-2 text-secondary bg-light card-body">
-                                    {{details[i]}}
-                            </div>
-                        </div> -->
+                    <p><span class="fa fa-star checked"></span>{{X.rating}}</p>
+                    <span><span class="mx-2 my-1">{{X.cost-X.discount | currency:'INR':'symbol'}}</span> <span><del>{{X.cost | currency:'INR':'symbol'}}</del></span></span>
+                    <p></p>
+                        <div id="details_div" class="m-0 p-0">
+                            <!-- <div class="p-1 card-body text-secondary bg-light" *ngFor="let detail of X.details.split('#')">
+                                <li>{{detail}}</li>
+                            </div> -->
+                        </div>
             </div>
             <div class="container-fliud p-1 col-auto align-self-center d-flex flex-wrap">
                 <button class="btn btn-dark mx-5" [disabled]="carts[i].qty < 1" (click)="Add_to_cart(i)">Add Service</button>

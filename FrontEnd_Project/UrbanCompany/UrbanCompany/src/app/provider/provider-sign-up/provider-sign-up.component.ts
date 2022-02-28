@@ -6,6 +6,9 @@ import { Login } from '../../Models/login';
 import { AuthServiceService } from '../../Services/auth-service.service';
 import { SignUpService } from '../../Services/sign-up.service';
 import { ProviderService } from '../../Services/provider.service';
+import { StatisticDataService } from 'src/app/Services/statistic-data.service';
+import { ConfirmEmail } from 'src/app/Models/ConfirmEmail';
+import { ManagingUsersAccountService } from 'src/app/Services/managing-users-account.service';
 
 @Component({
   selector: 'app-provider-sign-up',
@@ -14,105 +17,87 @@ import { ProviderService } from '../../Services/provider.service';
 })
 export class ProviderSignUpComponent implements OnInit {
 
-  constructor(private router : Router , private service : SignUpService , private login_service : AuthServiceService , private provider_service : ProviderService) { }
+  constructor(private router : Router , private service : SignUpService , private login_service : AuthServiceService , private provider_service : ProviderService , private user_manager:ManagingUsersAccountService , private statisticdata : StatisticDataService) { }
 
   ngOnInit(): void 
   { 
-    let signup_error = document.getElementById("SignUp_error") as HTMLElement;
-    signup_error.style.visibility=`hidden`;
+
+    this.statisticdata.GetStatisticData().subscribe
+    (
+      (Response)=>
+      {
+        this.totalprovider = (<any>Response).totalProvider;
+        this.totalamount = (<any>Response).totalAmount;
+        this.totalorder = (<any>Response).totalOrder;
+      },
+      (error)=>
+      {
+        console.log(error);
+      }
+    )
+
   }
 
-
   // variables and object define
-  
-  totalprovider:number=3000;
-  totalpaid:number=1234567856654;
-  totaldelivered:number=700000;
 
-  signup_data:SignUp = {username:"",email:"",phonenumber:"",password:""};
+  totalprovider:number=0;
+  totalamount:number=0;
+  totalorder:number=0;
 
+  data:SignUp = {username:"",email:"",phonenumber:"",password:""};
   cred:Login={username:"",password:""};
+  date:string="";
 
   //
 
-  
+  // forms
   SignupForm = new FormGroup({
     UserName : new FormControl('',[Validators.required,Validators.minLength(5)]),
-    PhoneNumber : new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
+    PhoneNumber : new FormControl('',[Validators.required,Validators.pattern("^[7-9]{1}[0-9]{9}$")]),
     Email : new FormControl('',[Validators.required,Validators.email]),
     PassWord : new FormControl('',[Validators.required,Validators.minLength(7),Validators.maxLength(16)])
   });
 
-  ProfileForm = new FormGroup({
-    Address : new FormControl('',[Validators.required]),
-    City : new FormControl('',[Validators.required]),
-    District : new FormControl('',[Validators.required])
-  });
+  EmailOtpForm = new FormGroup({
+    otp: new FormControl('',[Validators.required,Validators.pattern("^[0-9]{4,6}$")])
+  })
+  //
 
+
+  // SignUp method
   Signup()
   {
     if(this.SignupForm.valid)
     {
 
-      let values = this.SignupForm.value;
-      
-      this.signup_data.username = values.UserName;
-      this.signup_data.email = values.Email;
-      this.signup_data.phonenumber = values.PhoneNumber.toString();
-      this.signup_data.password = values.PassWord;
+      let signup_error = document.getElementById("SignUp_error") as HTMLElement;
 
-      this.service.Provider_SignUp(this.signup_data).subscribe
+      let values = this.SignupForm.value;
+      this.data.username = values.UserName;
+      this.data.email = values.Email;
+      this.data.phonenumber = values.PhoneNumber.toString();
+      this.data.password = values.PassWord;
+
+      // to signup user 
+      this.service.Provider_SignUp(this.data).subscribe
       (
         (Response)=>
         {
           const sts = (<any>Response).status;
           if(sts == 200)
           {
-            this.cred.username = this.signup_data.username;
-            this.cred.password = this.signup_data.password;
-
-            this.login_service.Logging(this.cred).subscribe(
-              async (Response)=>
-              {
-                const sts = Response.status;
-                if(sts == 200)
-                {
-                  const token = Response.token;
-                  localStorage.setItem("Jwt",token);
-                  localStorage.setItem("e_year",Response.expiration_year);
-                  localStorage.setItem("e_month",Response.expiration_month);
-                  localStorage.setItem("e_day",Response.expiration_day);
-                  localStorage.setItem("e_hour",Response.expiration_hour);
-                  localStorage.setItem("e_minute",Response.expiration_minute);
-                  localStorage.setItem("e_second",Response.expiration_second);
-
-                  let payload = JSON.parse(atob(token.split('.')[1]));
-
-                  await this.provider_service.GetProvider(payload.username,token).subscribe
-                  (
-                    (Response)=>
-                    {
-                      const cust_data:object= {           
-                        CustomerId : (<any>Response).providerId,
-                        CustomerName : (<any>Response).userName,
-                      }
-                      localStorage.setItem("data",JSON.stringify(cust_data));
-                    }
-                  )
-
-                  this.router.navigate(['Profile']);
-                }
-                // console.log(Response);
-              })
-
-            
+            let signup_F = document.getElementById("SignUp_F") as HTMLElement;
+            signup_F.style.visibility=`hidden`;
+            this.SignupForm.setValue({UserName:null,PhoneNumber:null,Email:null,PassWord:null});
+            let otp_F = document.getElementById("otp_F") as HTMLElement;
+            otp_F.style.visibility=`visible`;
           }
         },
         (error)=>
         {
           this.SignupForm.setValue({UserName:null,PhoneNumber:null,Email:null,PassWord:null});
           console.log(error.status);
-          let signup_error = document.getElementById("SignUp_error") as HTMLElement;
+          
           if(error.status == 302)
           {
             signup_error.style.visibility=`visible`;
@@ -129,8 +114,76 @@ export class ProviderSignUpComponent implements OnInit {
             signup_error.innerHTML = "..Issue while Registration";
           }
         }
-      );      
+      );
     }
 
+  }
+
+  // verification method
+
+  verifyemail()
+  {
+    if(this.EmailOtpForm.valid)
+    {
+      let signup_F = document.getElementById("SignUp_F") as HTMLElement;
+      signup_F.style.visibility=`hidden`;
+      
+      let signup_error = document.getElementById("SignUp_error") as HTMLElement;
+      let signup_success = document.getElementById("SignUp_success") as HTMLElement;
+      let signup_success_p = document.getElementById("SignUp_success_p") as HTMLElement;
+  
+      let otp_Value = this.EmailOtpForm.value;
+      let emailotp:ConfirmEmail = 
+      {
+        code: otp_Value.otp.toString(),
+        username:this.data.username
+      }
+
+      // to verify email of user 
+      this.user_manager.VerifyUserEmail(emailotp).subscribe
+      (
+        (Response)=>
+        {
+          console.log(Response);
+          const sts = (<any>Response).status;
+          if(sts == 200)
+          {
+            signup_success.style.visibility=`visible`;
+            signup_success.style.backgroundColor=`green`;
+            signup_success_p.innerHTML="Registration successful..";
+            signup_success_p.style.visibility=`visible`;
+            this.EmailOtpForm.reset;
+            this.SignupForm.reset;
+          }
+          if(sts == 400)
+          {
+            signup_success.style.visibility=`visible`;
+            signup_success.style.backgroundColor=`red`;
+            signup_success_p.innerHTML="Email Verification is fail..";
+            signup_success_p.style.visibility=`visible`;
+            this.EmailOtpForm.reset;
+            this.SignupForm.reset;
+          }
+        },
+        (error)=>
+        {
+          signup_success.style.visibility=`visible`;
+          signup_success.style.backgroundColor=`red`;
+          signup_success_p.innerHTML="Email Verification is fail..";
+          signup_success_p.style.visibility=`visible`;
+          this.EmailOtpForm.reset;
+          this.SignupForm.reset;
+        }
+      )  
+    }
+  }
+
+  dismiss_signupsuccess()
+  {
+      let signup_success = document.getElementById("SignUp_success") as HTMLElement;
+      let signup_success_p = document.getElementById("SignUp_success_p") as HTMLElement;
+
+      signup_success.style.visibility=`hidden`;
+      signup_success_p.style.visibility=`hidden`;
   }
 }

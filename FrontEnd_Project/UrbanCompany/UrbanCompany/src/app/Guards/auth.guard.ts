@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
       else
       {
         alert("Login To Continue...");
-        this.router.navigate(['Login']);
+        this.router.navigate(['']);
         return false;
       }
     }

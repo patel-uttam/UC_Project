@@ -1,6 +1,5 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../Guards/auth.guard';
 import { ProviderGuardGuard } from '../Guards/provider-guard.guard';
 import { RoleGuard } from '../Guards/role.guard';
 import { ProviderHomePageComponent } from './provider-home-page/provider-home-page.component';
@@ -13,8 +12,8 @@ const routes: Routes =
 [
   {path:"Service-Provider",component:ServiceProviderComponent,children:
   [
-    {path:"",component:ProviderHomePageComponent,canActivate:[ProviderGuardGuard,RoleGuard],data:{Role:['Provider']}},
-    {path:"Profile",component:ProviderProfileComponent,canActivate:[ProviderGuardGuard,RoleGuard],data:{Role:['Provider']}},
+    {path:"",component:ProviderHomePageComponent,canActivate:[ProviderGuardGuard,RoleGuard],data:{Role:['Provider','Admin']}},
+    {path:"Profile",component:ProviderProfileComponent,canActivate:[ProviderGuardGuard,RoleGuard],data:{Role:['Provider','Admin']}},
     {path:"Login",component:ProviderLoginComponent},
     {path:"SignUp",component:ProviderSignUpComponent},
     

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AddressDisplay } from '../Models/AddressDisplay';
 import { CartDisplay } from '../Models/CartDisplay';
+import { CartOrder } from '../Models/CartOrder';
 import { CartService } from '../Services/cart.service';
 import { OrderService } from '../Services/order.service';
 
@@ -88,46 +90,63 @@ export class OrderServicesComponent implements OnInit {
       }
     )
 
-
-    console.log("carts" , this.carts);
-    console.log("category1" , this.Salon_For_Women_1);
+    if(localStorage.getItem("location") != null)
+    {
+      let json_location:any = localStorage.getItem("location");
+      let loc:AddressDisplay[] = JSON.parse(json_location);
+    
+      if(loc.length != null)
+      {
+        for(var i=0;i<loc.length;i++)
+        {
+          this.locations.push(loc[i] as AddressDisplay); 
+        }
+      }
+  
+    }
   }
 
   // variables and object
 
-  carts:CartDisplay[] = [];
+    locations:AddressDisplay[]=[];
 
-  // category wise cart
-  Salon_For_Women_1:CartDisplay[] = [];
-  Hair_Services_For_Women_2:CartDisplay[] = [];
-  Salon_For_Men_3:CartDisplay[] = [];
-  Spa_For_Women_4:CartDisplay[] = [];
-  Massage_For_Men_5:CartDisplay[] = [];
-  Applicants_6:CartDisplay[] = [];
-  Plumbers_7:CartDisplay[] = [];
-  Electricians_8:CartDisplay[] = [];
-  Carpenters_9:CartDisplay[] = [];
-  Pest_Control_10:CartDisplay[] = [];
-  Cleaning_11:CartDisplay[] = [];
+    carts:CartDisplay[] = [];
+
+    // category wise cart
+    Salon_For_Women_1:CartDisplay[] = [];
+    Hair_Services_For_Women_2:CartDisplay[] = [];
+    Salon_For_Men_3:CartDisplay[] = [];
+    Spa_For_Women_4:CartDisplay[] = [];
+    Massage_For_Men_5:CartDisplay[] = [];
+    Applicants_6:CartDisplay[] = [];
+    Plumbers_7:CartDisplay[] = [];
+    Electricians_8:CartDisplay[] = [];
+    Carpenters_9:CartDisplay[] = [];
+    Pest_Control_10:CartDisplay[] = [];
+    Cleaning_11:CartDisplay[] = [];
 
 
-  // order cart 
+    // order cart 
+    order_cart:CartDisplay[] = [];
+    
+    // total amount
+    total_bill : number =0;
+    convenience_fee :number =49;
 
-  order_cart:CartDisplay[] = [];
-  
-  // total amount
-  total_bill : number =0;
-  convenience_fee :number =49;
+    // Html elements   
 
-  // Html elements   
 
-  // //
+  // 
+
+
+
 
   // function and form 
 
-  Date_Time_Form = new FormGroup({
+  Date_Time_Address_Form = new FormGroup({
       date : new FormControl('',[Validators.required]),
-      time : new FormControl('',[Validators.required])
+      time : new FormControl('',[Validators.required]),
+      address : new FormControl('',[Validators.required])
   })
 
 
@@ -136,8 +155,8 @@ export class OrderServicesComponent implements OnInit {
   Add_to_order_cart(service:CartDisplay)
   {
     this.total_bill = 0;
-
     this.order_cart = [];
+    
     this.order_cart.push(service);
     this.total_bill += (service.cost*service.qty)+this.convenience_fee;
     console.log(this.order_cart);
@@ -162,18 +181,29 @@ export class OrderServicesComponent implements OnInit {
 
   OrderServices(services:CartDisplay[])
   {
-    if(this.Date_Time_Form.valid)
+    if(this.Date_Time_Address_Form.valid)
     {
-      let date_time = this.Date_Time_Form.value; 
-      this.order_service.Make_Order(services,date_time.date,date_time.time,this.convenience_fee).subscribe
+      let date_time = this.Date_Time_Address_Form.value;
+
+      let address_value:AddressDisplay = this.Date_Time_Address_Form.controls['address'].value;
+
+      let final_order:CartOrder[]=[];
+      for(var S of services)
+      {
+        let order:CartOrder = {cartId:S.cartId,customer:S.customer,category:S.category,service:S.service,SubService:S.subService,cost:S.cost,qty:S.qty,addressLine:address_value.addressLine,area:address_value.area,city:address_value.city};
+        final_order.push(order);
+      }
+
+      this.order_service.Make_Order(final_order,date_time.date,date_time.time,this.convenience_fee).subscribe
       (
         (Response)=>
         {
             console.log(Response);
+            alert("Order place for Service is sucess.");
         },
         (error)=>
         {
-
+          alert("Order not place successfully \n Possibly provider in your area not available for now");
         }
       )
     }
@@ -184,14 +214,34 @@ export class OrderServicesComponent implements OnInit {
 
   Remove_service(cartid:number)
   {
-    console.log(cartid);
+    this.cart_service.DeleteCart(cartid).subscribe
+    (
+      (Response)=>
+      {
+        console.log(Response);
+      },
+      (error)=>
+      {
+        console.log(error);
+      }
+    )
   }
 
   // remove all services from cart 
 
   Remove_services()
   {
-    console.log("Remove All");
+    this.cart_service.DeleteCartAll().subscribe
+    (
+      (Response)=>
+      {
+        console.log(Response);
+      },
+      (error)=>
+      {
+        console.log(error);
+      }
+    )
   }
 
 

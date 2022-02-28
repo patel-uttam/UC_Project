@@ -6,7 +6,10 @@ import { NgModel, FormControl, FormGroup, Validators, FormBuilder } from '@angul
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthServiceService } from '../Services/auth-service.service';
-import { CustomerService } from '../Services/customer.service';
+import { Category } from '../Models/Category'
+import { CategoryService } from '../Services/category.service';
+import { AddressServiceService } from '../Services/address-service.service';
+import { AddressDisplay } from '../Models/AddressDisplay';
 
 @Component({
   selector: 'app-home-page',
@@ -17,13 +20,19 @@ import { CustomerService } from '../Services/customer.service';
 
 export class HomePageComponent implements OnInit {
 
-  constructor(private router : Router , private auth_service : AuthServiceService , private customer_service : CustomerService) 
+  constructor(private router : Router , private auth_service : AuthServiceService ,private category_service:CategoryService , private address_service:AddressServiceService) 
   {
   }
 
   // variables,object define
 
   link="Login";
+  selected_location:string="Gota";
+  selected_pin:string="";
+  location:AddressDisplay={addressLine:"",country:"",state:"",city:"",area:"",pincode:0};
+  locations:AddressDisplay[]=[];
+  categories:Category[]=[]
+  
   //
 
   // Function
@@ -38,10 +47,6 @@ export class HomePageComponent implements OnInit {
     if(this.link == "Login")
     {
       this.router.navigate(['Login']);      
-      // login_logout.innerHTML="LogOut";
-      // profile.style.visibility=`visible`;
-      // cart.style.visibility=`visible`;
-      // booking.style.visibility=`visible`;
     }
     else
     {
@@ -55,27 +60,60 @@ export class HomePageComponent implements OnInit {
     }
 
   }
-  
-  //
-  
 
+  // fetching Addresses
 
-/* ngOninit */
-
-  ngOnInit(): void 
+  Addresses()
   {
+    this.address_service.GetAddresses().subscribe
+    (
+      (Response)=>
+      {
+        console.log(Response);
+        for(var loc of Response as AddressDisplay[])
+        {
+          this.locations.push(loc as AddressDisplay);
+        }
+        this.location.area = this.locations[0].area;
+        this.location.country = this.locations[0].country;
+        this.location.state = this.locations[0].state;
+        this.location.city = this.locations[0].city;
+        this.location.pincode = this.locations[0].pincode;
+      },
+      (error)=>
+      {
+        console.log(error);
+      }
+    );
+    console.log(this.location);
+  }
 
-    // login functionalty
-        
+  // fetching categories
+  GetCategories()
+  {
+    this.category_service.GetCategories().subscribe
+    (
+      (Response)=>
+      { 
+        for(var category of Response as Category[])
+        {
+          this.categories.push(category as Category)
+        }
+      },
+      (error)=>
+      {
+        console.log(error);
+      }
+    );
+  }
 
+  // check is logging session expire
+  IFLogout()
+  {
     let login_logout = document.querySelector("#login_logout") as HTMLElement;
     let profile = document.querySelector("#profile") as HTMLElement;
     let cart = document.querySelector("#cart") as HTMLElement;
     let booking = document.querySelector("#booking") as HTMLElement;
-
-    profile.style.visibility=`hidden`;
-    cart.style.visibility=`hidden`;
-    booking.style.visibility=`hidden`;
 
     if(this.auth_service.ExpireToken() == true)
     {
@@ -85,7 +123,16 @@ export class HomePageComponent implements OnInit {
       cart.style.visibility=`hidden`;
       booking.style.visibility=`hidden`;
       this.auth_service.LogOut();
-    }
+    }  
+  }  
+
+  // if user logging
+  IfLogging()
+  {
+    let login_logout = document.querySelector("#login_logout") as HTMLElement;
+    let profile = document.querySelector("#profile") as HTMLElement;
+    let cart = document.querySelector("#cart") as HTMLElement;
+    let booking = document.querySelector("#booking") as HTMLElement;
 
     if(localStorage.getItem("Jwt") != null)
     {
@@ -95,12 +142,59 @@ export class HomePageComponent implements OnInit {
       cart.style.visibility=`visible`;
       booking.style.visibility=`visible`;
 
+      let json_location:any = localStorage.getItem("location");
+      let loc:AddressDisplay[] = JSON.parse(json_location) as AddressDisplay[];
+      console.log(localStorage.getItem("location"));
+      if(loc != null)
+      {
+        if(loc[0] != null)
+        {
+          this.selected_location = loc[0].city;
+          for(var L of loc as AddressDisplay[])
+          {
+            this.locations.push(L as AddressDisplay);
+          }
+          console.log(this.locations);
+        }
+      }
+      else
+      {
+        this.Addresses();
+      }
+    }
+    else
+    {
+      this.Addresses();
+    }
+  }
+  
+  // //
+  
 
-    } 
 
-    //
+/* ngOninit */
+
+  ngOnInit(): void 
+  {
+
+    // login functionalty
+    let profile = document.querySelector("#profile") as HTMLElement;
+    let cart = document.querySelector("#cart") as HTMLElement;
+    let booking = document.querySelector("#booking") as HTMLElement;
+    profile.style.visibility=`hidden`;
+    cart.style.visibility=`hidden`;
+    booking.style.visibility=`hidden`;
+    
+    //categories
+    this.GetCategories();
+    //logout
+    this.IFLogout();
+    //logging
+    this.IfLogging();
 
 
+
+    // jquery & script
     (function($)
     {
       $(document).ready(()=>
@@ -122,7 +216,7 @@ export class HomePageComponent implements OnInit {
     }(jQuery));
 
 
-    //     // first sider
+    // first sider
     var prev = document.querySelector('.prev') as HTMLElement;
     var next = document.querySelector('.next') as HTMLElement;
 

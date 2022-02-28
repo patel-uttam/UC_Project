@@ -7,7 +7,6 @@ import { ProviderLoginComponent } from './provider-login/provider-login.componen
 import { ProviderSignUpComponent } from './provider-sign-up/provider-sign-up.component';
 import { ProviderHeaderComponent } from './provider-header/provider-header.component';
 import { ServiceProviderComponent } from './service-provider/service-provider.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProviderProfileComponent } from './provider-profile/provider-profile.component';

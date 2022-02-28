@@ -1,7 +1,14 @@
+<div id="SignUp_success" class="container my-5 mx-auto p-1 w-25 row justify-content-center fixed-top alert border rounded">
+    <div class="d-flex tex text-center">
+        <p id="SignUp_success_p"></p>
+        <button class="p-0 btn btn-dark" (click)="dismiss_signupsuccess()">&times;</button>    
+    </div>    
+</div>
+
 <div class="m-0 p-0">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container">
-            <a routerLink="/Service-Provider"><img class="navbar-brand" style="height: 50px; width:fit-content;" src="../../assets/Images/main_home_logo_dark.png" alt="UC_logo"></a>
+            <a routerLink=""><img class="navbar-brand" style="height: 50px; width:fit-content;" src="../../assets/Images/main_home_logo_dark.png" alt="UC_logo"></a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#nav_option">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,11 +43,11 @@
             <p class="h4 align-self-end">partners On board</p>
         </div>&nbsp;
         <div class="col-lg-auto col-sm-12 align-self-center " style="background-image: url(../../../assets/Images/dollar_sign.svg); background-position: center; background-repeat: no-repeat;"> 
-            <h3 class="pt-2 display-4 text-success">{{totalpaid | currency:'INR':'symbol':'5.0'}}+</h3>
+            <h3 class="pt-2 display-4 text-success">{{totalamount | currency:'INR':'symbol':'5.0'}}+</h3>
             <p class="h4 align-self-end">Paid to Partners</p>
         </div>&nbsp;
         <div class="col-lg-auto col-sm-12 align-self-center " style="background-image: url(../../../assets/Images/total_service_provided_bg.svg); background-position: center; background-repeat: no-repeat;"> 
-            <h3 class="pt-2 display-4 text-success">{{totaldelivered}}+</h3>
+            <h3 class="pt-2 display-4 text-success">{{totalorder}}+</h3>
             <p class="h4 align-self-end">Service delivered</p>
         </div>
     </div>
@@ -58,7 +65,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid my-2 mx-auto" >
-                        <h4 id="SignUp_error" class="container-fluid alert alert-danger"></h4>
+                        <h4 id="SignUp_error" class="container-fluid alert-danger"></h4>
                         <div id="SignUp_F" class="container-fluid mx-auto my-5">
                             <Form [formGroup]="SignupForm" (ngSubmit)="Signup()">
                                 <label for="user">UserName</label><br>
@@ -71,7 +78,14 @@
                                 <input type="password" class="form-control" formControlName="PassWord"><br>
                                 <button type="submit" class="btn btn-success" [disabled]="SignupForm.invalid">Sign Up</button>
                             </Form>
-                          </div>
+                        </div>
+                        <div id="otp_F" class="container my-5 p-3 mx-auto">
+                            <h5>Verification Code is Sent to your email {{data.email}}</h5>
+                            <form [formGroup]="EmailOtpForm">
+                                <input id="otp" type="number" class="form-control w-25" formControlName="otp"><br>
+                                <button class="btn btn-success" [disabled]="EmailOtpForm.invalid" (click)="verifyemail()" data-dismiss="modal" >Verify OTP</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

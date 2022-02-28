@@ -1,0 +1,331 @@
+<div class="m-0 p-0">
+    <app-admin-header></app-admin-header>
+</div>
+
+<div class="m-0">
+    <div class="container-fluid mt-5 p-0">
+        <div class="text-center mt-5 mb-2 p-1 bg-white">
+            <h4 class="container-fluid mx-auto nav-link bg-dark text-light">Customers & Providers</h4>
+        </div>
+        <div class="card border-left-0 border-top-0 border-right-0 border-bottom-0 container mx-auto py-2 row justify-content-center">
+            <div class="card-body row d-flex justify-content-around">
+                
+                <a routerLink="Customers" class="m-0 p-0 nav-link">
+                    <div class="card m-0 p-0">
+                        <div class="card-body m-0 p-0" style="background-image:linear-gradient(180deg,rgba(0,0,0,0.2),rgba(0,0,0,0.8));">
+                            <img src="../../../assets/Images/customer.png" alt="" width="300px;" height="300px;">
+    
+                        </div>
+                        <div class="card-footer m-0 p-0 text-center p-1">
+                            <h4>Customers</h4>
+                        </div>
+                    </div>
+                </a>
+
+                <a routerLink="Providers" class="m-0 p-0 nav-link">
+                    <div class="card m-0 p-0">
+                        <div class="card-body m-0 p-0" style="background-image:linear-gradient(180deg,rgba(0,0,0,0.2),rgba(0,0,0,0.8));">
+                            <img src="../../../assets/Images/Register_Provider.png" alt="" width="300px;" height="300px;">
+    
+                        </div>
+                        <div class="card-footer m-0 p-0 text-center p-1">
+                            <h4>Providers</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <br class="container-fluid mx-0 py-2">
+
+        <div class="p-0 m-0">
+            <!-- category , service , subservice -->
+            <div class="text-center mt-5 mb-4 p-1 bg-white">
+                <h4 class="container-fluid mx-auto nav-link bg-dark text-light"> Categories , Services , SubServices</h4>
+            </div>
+
+            <!-- Add category , service ,subservice -->
+
+            <div class="card context mx-auto p-1">
+                <div class="card-header p-1 row nav nav-tab justify-content-around text-center">
+                    <a class="container w-25 btn btn-secondary nav-link nav-item nav-item-action active" data-toggle="tab" href="#cat_add">Add Categories</a>
+                    <a class="container w-25 btn btn-secondary nav-link nav-item nav-item-action" data-toggle="tab" href="#ser_add">Add Services</a>
+                    <a class="container w-25 btn btn-secondary nav-link nav-item nav-item-action" data-toggle="tab" href="#sub_ser_add">Add SubServices</a>
+                </div>
+                <div class="card-body p-1">
+                    <div class="container mx-auto my-2 w-50 tab-content">
+                        <div id="cat_add" class="tab-pane active">
+                            <h4>Add New Category</h4>
+                            <form [formGroup]="Add_category" >
+                                <label for="cat_input1">Categry Name </label> <input id="cat_input1"  type="text" class="form-control" formControlName="categoryname">
+                                <label for="cat_input2">Logo Image </label> <input id="cat_input2"  type="file" accept="image/*" class="form-control" formControlName="logoimg">
+                                <label for="cat_input3">BackGround Image </label> <input id="cat_input3"  type="file" accept="image/*" class="form-control" formControlName="bgimg">
+                                <label for="cat_input4">About Category</label> <textarea id="cat_input4" rows="3" class="form-control" placeholder="Add description for category....." formControlName="description"></textarea>
+                                <br>
+                                <button class="btn btn-primary" (click)="Add_Category()">Add</button>
+                            </form>     
+                        </div>
+                        <div id="ser_add" class="tab-pane">
+                            <h4>Add New Service</h4>
+                            <form [formGroup]="Add_service" >
+                                <label for="ser_input1">Service Name </label> <input id="ser_input1"  type="text" class="form-control" formControlName="servicename">
+                                <label for="select_category">Category</label>
+                                <select id="select_category" class="form-control" formControlName="category">
+                                    <option *ngFor="let cat of Categories;" value="{{cat.categoryId}}">
+                                        {{cat.categoryName}}
+                                    </option>
+                                </select>
+                                <br>
+                                <button class="btn btn-primary" (click)="Add_Service()">Add</button>                         
+                            </form>     
+                        </div>
+                        <div id="sub_ser_add" class="tab-pane">
+                            <h4>Add New Sub_Service</h4>
+                            <form [formGroup]="Add_subservice" >
+                                <label for="sub_ser_input">SubService Name</label> <input id="sub_ser_input"  type="text" class="form-control" formControlName="subservicename">
+                                <label for="select_service">Service</label>
+                                <select id="select_service" class="form-control" formControlName="service">
+                                    <option *ngFor="let ser of Services;" value="{{ser.serviceId}}">
+                                        {{ser.serviceName}}
+                                    </option>
+                                </select>
+                                <label for="sub_ser_input1">Cost</label> <input id="sub_ser_input1"  type="number" class="form-control" formControlName="cost">
+                                <label for="sub_ser_input2">Discount</label> <input id="sub_ser_input2"  type="number" class="form-control" formControlName="discount">
+                                <label for="sub_ser_input3">Avg. Service Time (minute)</label> <input id="sub_ser_input3"  type="number" class="form-control" formControlName="servicetime">
+                                <label for="sub_ser_input4">Img1</label> <input id="sub_ser_input4"  type="file" accept="image/*" class="form-control" formControlName="img1">
+                                <label for="sub_ser_input5">Img2</label> <input id="sub_ser_input5"  type="file" accept="image/*" class="form-control" formControlName="img2">
+                                <label for="sub_ser_input6">Img3</label> <input id="sub_ser_input6"  type="file" accept="image/*" class="form-control" formControlName="img3">
+                                <label for="sub_ser_input7">Service Detail</label> <input id="sub_ser_input7"  type="text" class="form-control" formControlName="detail">
+                                <br>
+                                <button class="btn btn-primary" (click)="Add_SubService()">Add</button> 
+                            </form>     
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--get category , service , subservice -->
+
+            <div class="container-fluid card mx-auto my-5">
+                <div class="card-header p-1 row nav nav-tab justify-content-around">
+                    <a class="btn btn-secondary nav-link nav-item nav-item-action active" data-toggle="tab" href="#cat">Categories</a>
+                    <a class="btn btn-secondary nav-link nav-item nav-item-action" data-toggle="tab" href="#ser">Services</a>
+                    <a class="btn btn-secondary nav-link nav-item nav-item-action" data-toggle="tab" href="#s_ser">SubServices</a>
+                </div>
+                <div class="tab-content">
+                    <div id="cat" class="tab-pane active" >
+                        <div class="container-fluid mt-5">
+                            <div *ngFor="let cat of Categories; index as i">
+                                <div class="container-fluid mx-auto py-1 row">
+                                    <div *ngIf="i==0" class="col-10 row mb-4 text-center">
+                                        <b class="col-2 text-center">ID</b>
+                                        <b class="col-4 text-center">Name</b>
+                                        <b class="col-4 text-center">About</b>
+                                    </div>
+                                    <div class="col-10 row text-center border">
+                                        <p class="col-2 text-center">{{cat.categoryId}}</p>
+                                        <p class="col-4 text-center">{{cat.categoryName}}</p>
+                                        <p class="col-4 text-center">{{cat.description}}</p>
+                                    </div>
+                                    <div class="col-2 row justify-content-end">
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#update_category" (click)="Set_Category(cat)"><i class="fa fa-edit p-1 "></i></button>&nbsp;&nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ser" class="tab-pane" >
+                        <div class="container-fluid mt-5">
+                            <div *ngFor="let ser of Services; index as i">
+                                <div class="container-fliud mx-auto py-1 row">
+                                    <div *ngIf="i==0" class="col-10 row mb-4 text-center">
+                                        <b class="col-3 text-center">ID</b>
+                                        <b class="col-5 text-center">Name</b>
+                                        <b class="col-2 text-center">Rating</b>
+                                    </div>
+                                    <div class="col-10 row text-center border">
+                                        <p class="col-3 text-center">{{ser.serviceId}}</p>
+                                        <p class="col-5 text-center">{{ser.serviceName}}</p>
+                                        <p class="col-2 text-center">{{ser.rating==null ? 0 : ser.rating}}</p>
+                                    </div>
+                                    <div class="col-2 row justify-content-end">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="s_ser" class="tab-pane" >
+                        <div class="container-fluid mt-5">
+                            <div *ngFor="let s_ser of SubServices; index as i">
+                                <div *ngIf="i==0" class="col-10 row mb-4 text-center; index as i">
+                                    <b class="col-2 text-center">ID</b>
+                                    <b class="col-4 text-center">Name</b>
+                                    <b class="col-2 text-center">Cost</b>
+                                    <b class="col-2 text-center">Discount</b>
+                                </div>
+                                <div class="container-fliud mx-auto py-1 row">
+                                    <div class="col-10 row text-center border">
+                                        <p class="col-2 text-center">{{s_ser.subServiceId}}</p>
+                                        <p class="col-4 text-center">{{s_ser.subServiceName}}</p>
+                                        <p class="col-2 text-center">{{s_ser.cost}}</p>
+                                        <p class="col-2 text-center">{{s_ser.discount}}</p>
+                                    </div>
+                                    <div class="col-2 row justify-content-end">
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#update_subservice" (click)="Set_SubService(s_ser)"><i class="fa fa-edit p-1 "></i></button>&nbsp;&nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br class="container-fluid mx-0 py-2">
+        
+        <div>
+            <!-- country , state , city ,area -->
+            <div class="text-center mt-5 mb-4 p-1 bg-white">
+                <h4 class="container-fluid mx-auto nav-link bg-dark text-light"> Country , State , City , Area </h4>
+            </div>
+
+            <!-- Add country , state ,city , area  -->
+            <div class="card context mx-auto p-1">
+                <div class="card-header p-1 row nav nav-tab justify-content-around text-center">
+                    <a class="container btn btn-secondary nav-link nav-item nav-item-action active" data-toggle="tab" href="#country_add" style="width: fit-content;">Add Country</a>
+                    <a class="container btn btn-secondary nav-link nav-item nav-item-action" data-toggle="tab" href="#state_add" style="width: fit-content;">Add State</a>
+                    <a class="container btn btn-secondary nav-link nav-item nav-item-action" data-toggle="tab" href="#city_add" style="width: fit-content;">Add City</a>
+                    <a class="container btn btn-secondary nav-link nav-item nav-item-action" data-toggle="tab" href="#area_add" style="width: fit-content;">Add Area</a>
+                </div>
+                <div class="card-body p-1">
+                    <div class="container mx-auto my-2 w-50 tab-content">
+                        <div id="country_add" class="tab-pane active">
+                            <h4>Add new country</h4>
+                            <form [formGroup]="Add_country" >
+                                <label for="country">Country </label> <input id="country"  type="text" class="form-control" formControlName="countryname">
+                                <br>
+                                <button class="btn btn-primary" (click)="Add_Country()">Add</button>
+                            </form>     
+                        </div>
+                        <div id="state_add" class="tab-pane">
+                            <h4>Add New State</h4>
+                            <form [formGroup]="Add_state" >
+                                <label for="select_country_state">Country</label>
+                                <select id="select_country_state" class="form-control" formControlName="country" >
+                                    <option *ngFor="let c of countries;" value="{{c.countryId}}">
+                                        {{c.countryName}}
+                                    </option>
+                                </select>
+                                <label for="statename">State </label> <input id="statename"  type="text" class="form-control" formControlName="statename">
+
+                                <br>
+                                <button class="btn btn-primary" (click)="Add_State()">Add</button>                         
+                            </form>     
+                        </div>
+                        <div id="city_add" class="tab-pane">
+                            <h4>Add New City</h4>
+                            <form [formGroup]="Add_city">
+                                <label for="select_country_city">Country</label>
+                                <select id="select_country_city" class="form-control" formControlName="country" (change)="OnChangeCountry_for_city($event)">
+                                    <option *ngFor="let c of countries;" value="{{c.countryId}}">
+                                        {{c.countryName}}
+                                    </option>
+                                </select>
+                                <label for="select_state_city">State</label>
+                                <select id="select_state_city" class="form-control" formControlName="state" >
+                                    <option *ngFor="let s of states_for_city;" value="{{s.stateId}}">
+                                        {{s.stateName}}
+                                    </option>
+                                </select>
+                                <label for="cityname">State </label> <input id="cityname"  type="text" class="form-control" formControlName="cityname">
+                                <br>
+                                <button class="btn btn-primary" (click)="Add_City()">Add</button> 
+                            </form>     
+                        </div>
+                        <div id="area_add" class="tab-pane">
+                            <h4>Add New Area</h4>
+                            <form [formGroup]="Add_area">
+                                <label for="select_country_area">Country</label>
+                                <select id="select_country_area" class="form-control" formControlName="country" (change)="OnChangeCountry_for_area($event)">
+                                    <option *ngFor="let c of countries;" value="{{c.countryId}}">
+                                        {{c.countryName}}
+                                    </option>
+                                </select>
+                                <label for="select_state_area">State</label>
+                                <select id="select_state_area" class="form-control" formControlName="state" (change)="OnChangeState_for_area($event)">
+                                    <option *ngFor="let s of states_for_area;" value="{{s.stateId}}">
+                                        {{s.stateName}}
+                                    </option>
+                                </select>
+                                <label for="select_city_area">City</label>
+                                <select id="select_city_area" class="form-control" formControlName="city">
+                                    <option *ngFor="let c of cities_for_area;" value="{{c.cityId}}">
+                                        {{c.cityName}}
+                                    </option>
+                                </select>
+                                <label for="areaname">Area </label> <input id="areaname"  type="text" class="form-control" formControlName="areaname">
+                                <label for="pin">PinCode </label> <input id="pin"  type="number" class="form-control" formControlName="pincode">
+
+                                <br>
+                                <button class="btn btn-primary" (click)="Add_Area()">Add</button> 
+                            </form>     
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- // modal for update sub service -->
+<div class="modal" id="update_subservice">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form [formGroup]="Update_subservice" >
+                    <label for="sub_ser_input">SubService Name</label> <input id="sub_ser_input"  type="text" class="form-control" formControlName="subservicename">
+                    <label for="select_service">Service</label>
+                    <select id="select_service" class="form-control" formControlName="service">
+                        <option *ngFor="let ser of Services;" value="{{ser.serviceId}}">
+                            {{ser.serviceName}}
+                        </option>
+                    </select>
+                    <label for="sub_ser_input1">Cost</label> <input id="sub_ser_input1"  type="number" class="form-control" formControlName="cost"><br>
+                    <label for="sub_ser_input2">Discount</label> <input id="sub_ser_input2"  type="number" class="form-control" formControlName="discount"><br>
+                    <label for="sub_ser_input3">Avg. Service Time (minute)</label> <input id="sub_ser_input3"  type="number" class="form-control" formControlName="servicetime"><br>
+                    <label for="sub_ser_input4">Img1</label> <input id="sub_ser_input4"  type="file" accept="image/*" class="form-control" formControlName="img1"><br>
+                    <label for="sub_ser_input5">Img2</label> <input id="sub_ser_input5"  type="file" accept="image/*" class="form-control" formControlName="img2"><br>
+                    <label for="sub_ser_input6">Img3</label> <input id="sub_ser_input6"  type="file" accept="image/*" class="form-control" formControlName="img3"><br>
+                    <label for="sub_ser_input7">Service Detail</label> <input id="sub_ser_input7"  type="text" class="form-control" formControlName="detail"><br>
+                 </form>
+            </div><br>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" [disabled]="Update_subservice.invalid || (!Update_subservice.dirty) " (click)="Update_SubService()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- // modal for update Category -->
+<div class="modal" id="update_category">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form [formGroup]="Update_category">
+                    <label for="cat_input1">Categry Name </label> <input id="cat_input1"  type="text" class="form-control" formControlName="categoryname">
+                    <label for="cat_input2">Logo Image </label> <input id="cat_input2"  type="file" accept="image/*" class="form-control" formControlName="logoimg">
+                    <label for="cat_input3">BackGround Image </label> <input id="cat_input3"  type="file" accept="image/*" class="form-control" formControlName="bgimg">
+                    <label for="cat_input4">About Category</label> <textarea id="cat_input4" rows="3" class="form-control" placeholder="Add description for category....." formControlName="description"></textarea>
+                </form>
+            </div><br>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" [disabled]="Update_category.invalid || (!Update_category.dirty) " (click)="Update_Category()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

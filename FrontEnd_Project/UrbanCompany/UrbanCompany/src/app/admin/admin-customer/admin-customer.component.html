@@ -1,0 +1,143 @@
+<div class="container-fluid mx-auto my-3 p-1">
+    <div class="card border-left-0 border-top-0 border-right-0 border-bottom-0">
+        <div class="card-body" *ngFor="let C of customers; index as i">
+            <div class="card border-left-0 border-top-0 border-right-0 container mx-auto">
+                <div class="card-body row">
+                    <div class="col-10">
+                        <div class="m-0 p-0">
+                            <div class="container-fliud row d-flex flex-wrap justify-content-around">
+                                <p><b>customer Id :</b> {{C.customerId}}</p>&nbsp;
+                                <p><b>customer Name :</b>{{C.customerName}}</p>&nbsp;
+                                <p><b>customer Email :</b>{{C.customerEmail}}</p>&nbsp;
+                                <p><b>customer Phone :</b>{{C.customerPhone}}</p>&nbsp;
+                            </div>
+                            <div class="container mx-auto"> 
+                                <p>Home Address</p>
+                                <div class="container-fliud row d-flex flex-wrap justify-content-around">
+                                    <p><b>customer AddressLine :</b>{{C.customerAddress1}}</p>&nbsp;
+                                    <p><b>customer Locality :</b>{{C.customerArea1}}</p>&nbsp;
+                                    <p><b>customer City :</b>{{C.customerCity1}}</p>&nbsp;
+                                    <p><b>customer State :</b>{{C.customerState1}}</p>&nbsp;
+                                </div>
+                                <p>Other Address</p>
+                                <div class="container-fliud row d-flex flex-wrap justify-content-around">
+                                    <p><b>customer AddressLine :</b>{{C.customerAddress2}}</p>&nbsp;
+                                    <p><b>customer Locality :</b>{{C.customerArea2}}</p>&nbsp;
+                                    <p><b>customer City :</b>{{C.customerCity2}}</p>&nbsp;
+                                    <p><b>customer State :</b>{{C.customerState2}}</p>&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2 row justify-content-end align-self-center">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#form_modal" (click)="Set_Form(C)">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- model for update -->
+    <div id="form_modal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container">
+                        <br>
+                        <h3 class="ms-5 font-weight-bold">Profile</h3>
+                        <br>
+                        <form [formGroup]="customer_data" class="mx-auto">
+                            <label for="name">userName</label>
+                            <input id="name" type="text" class="form-control" formControlName ="username">
+                            <label for="email">UserEmail</label>
+                            <input id="email" type="text" class="form-control" formControlName ="email">
+                            <label for="phone">PhoneNumber</label>
+                            <input id="phone" type="number" class="form-control" formControlName ="phone">
+                            <br><br>
+                            <div class="container card mx-0 p-1">
+
+                                <p class="card-header">Manage Addresses</p>
+                                <div class="container card-body">
+                                    <div class="container-fliud d-flex">
+                                        <label for="country">Country : </label>
+                                        <select id="country" class="form-control w-25" formControlName ="country" (change)="OnChangeCountry($event)">
+                                        
+                                            <option *ngFor="let C of countries" [ngValue]="C">{{C.countryName}}</option>
+                                        </select>
+                                    </div>
+                                    <br><hr>
+                                    <div class="container-fliud">
+                                        <p>Home Address</p>
+                                        <div class="row d-flex justify-content-around">
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="address1">AddressLine</label>
+                                                <input id="address1" type="text" class="form-control w-50" formControlName ="address1">    
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="area1">Locality</label>
+                                                <select id="area1" type="text" class="form-control w-50" formControlName ="area1">
+                                                
+                                                    <option *ngFor="let A of areas" value="{{A.areaName}}">{{A.areaName}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="city1">City</label>
+                                                <select id="city1" class="form-control w-50" formControlName ="city1" (change)="OnChangeCity($event)">
+                                                
+                                                    <option *ngFor="let C of cities" [ngValue]="C">{{C.cityName}}</option>
+                                                </select>                        
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="state1">State</label>
+                                                <select id="state1" class="form-control w-50" formControlName ="state1" (change)="OnChangeState($event)">
+                                                
+                                                    <option *ngFor="let S of states" [ngValue]="S">{{S.stateName}}</option>
+                                                </select>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                    <br><hr>
+                                    <div class="container-fliud">
+                                        <p>Other Address</p>
+                                        <div class="row d-flex justify-content-around">
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="address1">AddressLine</label>
+                                                <input id="address1" type="text" class="form-control w-50" formControlName ="address2">    
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="area1">Locality</label>
+                                                <select id="area1" type="text" class="form-control w-50" formControlName ="area2">
+                                                
+                                                    <option *ngFor="let A of areas2" value="{{A.areaName}}">{{A.areaName}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="city1">City</label>
+                                                <select id="city1" class="form-control w-50" formControlName ="city2" (change)="OnChangeCity2($event)">
+                                                
+                                                    <option *ngFor="let C of cities2" [ngValue]="C">{{C.cityName}}</option>
+                                                </select>                        
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="state1">State</label>
+                                                <select id="state1" class="form-control w-50" formControlName ="state2" (change)="OnChangeState2($event)">
+                                                
+                                                    <option *ngFor="let S of states2" [ngValue]="S">{{S.stateName}}</option>
+                                                </select>
+                                            </div>
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row justify-content-end">
+                                <button class="btn btn-danger" data-dismiss="modal">close</button>&nbsp;
+                                <button class="btn btn-success" data-dismiss="modal" [disabled]="!(this.customer_data.valid && this.customer_data.dirty)" (click)="Update_Customer()">Update</button>    
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>

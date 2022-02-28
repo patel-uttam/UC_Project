@@ -10,18 +10,86 @@
         <label for="name">userName</label>
         <input id="name" type="text" class="form-control w-25" formControlName ="username">
         <label for="email">UserEmail</label>
-        <input id="email" type="text" class="form-control w-25" formControlName ="email">
-        
-        <br><br>
-         
+        <input id="email" type="text" class="form-control w-25" formControlName ="email">    
         <label for="phone">PhoneNumber</label>
         <input id="phone" type="number" class="form-control w-25" formControlName ="phone">
-        <label for="address">AddressLine</label>
-        <input id="address" type="text" class="form-control w-25" formControlName ="address">
-        <label for="city">City</label>
-        <input id="city" type="text" class="form-control w-25" formControlName ="city">
-        <label for="district">District</label>
-        <input id="district" type="text" class="form-control w-25" formControlName ="district">
+        <br><br>
+
+        <div class="container card mx-0 p-1">
+
+            <p class="card-header">Manage Addresses</p>
+            <div class="container card-body">
+                <div class="container-fliud d-flex">
+                    <label for="country">Country : </label>
+                    <select id="country" class="form-control w-25" formControlName ="country" (change)="OnChangeCountry($event)">
+                    
+                        <option *ngFor="let C of countries" [ngValue]="C">{{C.countryName}}</option>
+                    </select>
+                </div>
+                <br><hr>
+                <div class="container-fliud">
+                    <p>Home Address</p>
+                    <div class="row d-flex justify-content-around">
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="address1">AddressLine</label>
+                            <input id="address1" type="text" class="form-control w-50" formControlName ="address1">    
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="area1">Locality</label>
+                            <select id="area1" type="text" class="form-control w-50" formControlName ="area1">
+                            
+                                <option *ngFor="let A of areas" value="{{A.areaName}}">{{A.areaName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="city1">City</label>
+                            <select id="city1" class="form-control w-50" formControlName ="city1" (change)="OnChangeCity($event)">
+                            
+                                <option *ngFor="let C of cities" [ngValue]="C">{{C.cityName}}</option>
+                            </select>                        
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="state1">State</label>
+                            <select id="state1" class="form-control w-50" formControlName ="state1" (change)="OnChangeState($event)">
+                            
+                                <option *ngFor="let S of states" [ngValue]="S">{{S.stateName}}</option>
+                            </select>
+                        </div>
+                    </div>    
+                </div>
+                <br><hr>
+                <div class="container-fliud">
+                    <p>Other Address</p>
+                    <div class="row d-flex justify-content-around">
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="address1">AddressLine</label>
+                            <input id="address1" type="text" class="form-control w-50" formControlName ="address2">    
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="area1">Locality</label>
+                            <select id="area1" type="text" class="form-control w-50" formControlName ="area2">
+                            
+                                <option *ngFor="let A of areas2" value="{{A.areaName}}">{{A.areaName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="city1">City</label>
+                            <select id="city1" class="form-control w-50" formControlName ="city2" (change)="OnChangeCity2($event)">
+                            
+                                <option *ngFor="let C of cities2" [ngValue]="C">{{C.cityName}}</option>
+                            </select>                        
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="state1">State</label>
+                            <select id="state1" class="form-control w-50" formControlName ="state2" (change)="OnChangeState2($event)">
+                            
+                                <option *ngFor="let S of states2" [ngValue]="S">{{S.stateName}}</option>
+                            </select>
+                        </div>
+                    </div>      
+                </div>
+            </div>
+        </div>
         <br>
         <button class="btn btn-success" [disabled]="!(this.customer_data.valid && this.customer_data.dirty)" (click)="Update_Customer()">Update</button>
     </form>

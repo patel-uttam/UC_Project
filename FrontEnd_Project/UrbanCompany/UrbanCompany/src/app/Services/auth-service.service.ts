@@ -55,6 +55,7 @@ export class AuthServiceService {
     localStorage.removeItem("e_hour");
     localStorage.removeItem("e_minute");
     localStorage.removeItem("e_second");
+    localStorage.removeItem("location");
   }
 
   ExpireToken()
@@ -121,7 +122,7 @@ export class AuthServiceService {
     var payload =JSON.parse(window.atob(token.split('.')[1]));
     let roles = payload.roles as string[];
 
-    if(roles.includes(requiredRole[0]))
+    if((roles.includes(requiredRole[0])) && (!roles.includes(requiredRole[1])) )
     {
       return true;
     }

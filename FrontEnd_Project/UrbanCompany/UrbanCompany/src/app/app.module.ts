@@ -27,7 +27,13 @@ import { CartService } from './Services/cart.service';
 import { CategoryService } from './Services/category.service';
 import { BookingsComponent } from './bookings/bookings.component';
 import { OrderService } from './Services/order.service';
-
+import { AdminModule } from './admin/admin.module';
+import { AdminRoutingModule } from './admin/admin-routing.module';
+import { ProviderService } from './Services/provider.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UnauthorizedAccessComponent } from './unauthorized-access/unauthorized-access.component';
+import { CloudinaryModule } from '@cloudinary/ng';
+import { StatisticDataService } from './Services/statistic-data.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +48,8 @@ import { OrderService } from './Services/order.service';
     SubServiceComponent,
     OrderServicesComponent,
     BookingsComponent,
+    PageNotFoundComponent,
+    UnauthorizedAccessComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,11 +59,13 @@ import { OrderService } from './Services/order.service';
     HttpClientModule,
     NgbModule,
     ProviderModule,
+    AdminModule,
     ProviderRoutingModule,
+    AdminRoutingModule,
     AppRoutingModule,
     
   ],
-  providers: [AuthServiceService,CustomerService,SignUpService,CartService,CategoryService,OrderService],
+  providers: [AuthServiceService,CustomerService,SignUpService,CartService,CategoryService,OrderService,ProviderService,StatisticDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

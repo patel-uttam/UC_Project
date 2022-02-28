@@ -1,5 +1,8 @@
-import { HttpHeaders } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Category } from '../Models/Category';
+import { Provider } from '../Models/Provider';
 import { service } from '../Models/Services';
 import { CategoryService } from '../Services/category.service';
 
@@ -10,12 +13,28 @@ import { CategoryService } from '../Services/category.service';
 })
 export class SalonForWomenComponent implements OnInit {
 
-  constructor(private service:CategoryService) 
+  constructor(private route:ActivatedRoute , private category_service:CategoryService) 
   {   }
 
   ngOnInit(): void {
 
-    this.service.GetService("Salon For Women").subscribe
+    this.route.params.subscribe((X)=>{this.location=X['location'],this.category=X['Category']});
+
+    this.category_service.GetCategory(this.category).subscribe
+    (
+      (Response)=>
+      {
+        let category_value = Response as Category;
+        this.description = category_value.description;
+      },
+      (error)=>
+      {
+
+      }
+    )
+
+    console.log("cat : "+this.category)
+    this.category_service.GetService(this.category).subscribe
     (
       (Response)=>
       {
@@ -31,9 +50,31 @@ export class SalonForWomenComponent implements OnInit {
 
     );
 
+    this.category_service.GetProvider_By_Category_City(this.category,this.location).subscribe
+    (
+      (Response)=>
+      {
+        console.log(Response);
+        for(var P of Response as Provider[])
+        {
+          this.providers.push(P as Provider);
+        }
+      },
+      (error)=>
+      {
+        console.log(error);
+      }
+    )
   }
-  services_list:service[]=[];
 
+  // variables
+  
+  category:string="";
+  location:string="";
+  description:string="";
+
+  services_list:service[]=[];
+  providers:Provider[]=[];
 
   
 }

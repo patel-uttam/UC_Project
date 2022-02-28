@@ -4,10 +4,13 @@ export interface Provider
     userName: string,
     firstName: string,
     lastName : string,
-    providerPhone: number,
+    providerPhone: string,
     providerEmail: string,
     providerCity: string,
-    providerDistrict: string,
     rating: number,
-    category: number 
+    category: number
+    providerArea:string
+    providerState:string
+    providerCountry:string
+    isAvailable:boolean
 }

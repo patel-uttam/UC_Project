@@ -10,4 +10,5 @@ export interface OrderOngoing
     time:string | null;
     cost:number | null;
     qty:number | null;
+    deliveryAddress:string
 }

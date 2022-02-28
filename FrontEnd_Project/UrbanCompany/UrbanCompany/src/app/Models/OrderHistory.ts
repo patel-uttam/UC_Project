@@ -10,4 +10,5 @@ export interface OrderHistory
     time:string | null;
     cost:number | null;
     qty:number | null;
+    deliveryAddress:String
 }

@@ -259,6 +259,10 @@
             <button id="Cleaning_11" class="btn btn-success" data-toggle="modal" data-target="#date_time" (click)="Add_to_order_carts(Cleaning_11)">Order All(Cleaning)</button>
             <br>
         </div>
+        <br><hr>
+        <div class="container-fluid mt-2">
+            <button class="m-2 p-1 btn btn-danger" (click)="Remove_services()">Remove All</button>
+        </div>
     </div>
 </div>
 
@@ -288,16 +292,22 @@
                 <hr class="container-fluid px-0 py-2 hr_class">
                 <br>
                 <b>Pick Date & time</b>
-                <form class="mt-2 form" [formGroup]="Date_Time_Form">
+                <form class="mt-2 form" [formGroup]="Date_Time_Address_Form">
                     <label for="select_date">Date</label> <input id="select_date" type="date" class="form-control " formControlName="date"><br>
                     <label for="select_time">convenient Time</label><input id="select_time" type="time" class="form-control " formControlName="time">
+                    <hr class="container-fluid px-0 py-2 hr_class">
+                    <br>
+                    <b>Address</b>
+                    <select id="location" class="form-control" formControlName="address">
+                        <option *ngFor="let loc of locations; index as i" [ngValue]="loc" >{{loc.addressLine}},{{loc.area}},{{loc.city}}</option>
+                    </select>
                 </form>
 
-                <br>
+                <br>    
 
                 <div class="container row justify-content-around">
                     <button class="btn btn-danger w-25 " data-dismiss="modal">close</button>
-                    <button class="btn btn-success w-25 " [disabled]="Date_Time_Form.invalid" (click)="OrderServices(order_cart)">Confirm</button>
+                    <button class="btn btn-success w-25 " [disabled]="Date_Time_Address_Form.invalid" (click)="OrderServices(order_cart)">Confirm</button>
                 </div>
             </div>
             <!-- <div class="modal-footer justify-content-end"> -->

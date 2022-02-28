@@ -15,14 +15,70 @@
         <div class="col-12 my-5 p-0">
             <div class="tab-content" id="div_tabcontent">
                 <div class="tab-pane show active" id="h1_1" role="tabpanel">
-                    <div class="container-fluid p-2 bg-light" *ngFor="let order of ongoing_order; index as i">
-                        <div class="bg-light">
-
+                    <div class="container-fluid card-body p-2 bg-light" *ngFor="let order of ongoing_order; index as i">
+                        <div class="card">
+                            <div class="card-header">
+                                <p>OrderId : <b>{{order.orderId}}</b></p>
+                            </div>
+                            <div class="card-body">
+                                <div class="container-fluid row justify-content-around bg-light">
+                                    <div class="col-auto">
+                                        <p>Provider : <b>{{order.provider_First}} {{order.provider_Last}}</b></p>
+                                        <p>Servcie : <b>{{order.subService}} from service {{order.service}}</b></p>
+                                    </div>
+                                    <div class="col-auto">
+                                        <p>Date : <b>{{order.serviceDate}}</b></p>
+                                        <p>Time : <b>{{order.serviceTime}}</b></p>
+                                    </div>
+                                    <div class="col-auto">
+                                        <p>Qty : <b>{{order.qty}}</b></p>
+                                        <p>Cost : <b>{{order.cost}}</b></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane show" id="h1_2" role="tabpanel">
-
+                    <div class="container-fluid card-body p-2 bg-light" *ngFor="let order of history_order; index as i">
+                        <div class="card">
+                            <div class="card-header">
+                                <p>OrderId : <b>{{order.orderId}}</b></p>
+                            </div>
+                            <div class="card-body">
+                                <div class="container-fluid row justify-content-around bg-light">
+                                    <div class="col-auto">
+                                        <p>Provider : <b>{{order.provider_First}} {{order.provider_Last}}</b></p>
+                                        <p>Servcie : <b>{{order.subService}} from service {{order.service}}</b></p>
+                                    </div>
+                                    <div class="col-auto">
+                                        <p>Date : <b>{{order.serviceDate}}</b></p>
+                                        <p>Time : <b>{{order.serviceTime}}</b></p>
+                                    </div>
+                                    <div class="col-auto">
+                                        <p>Qty : <b>{{order.qty}}</b></p>
+                                        <p>Cost : <b>{{order.cost}}</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-body">
+                                    <form [formGroup]="reviewform">
+                                        <textarea class="form-control" rows="2" cols="8" placeholder="Give your review/feedback on this order..." formControlName="review"></textarea>
+                                        <br>
+                                        <select class="form-control" formControlName="rating">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <button class="btn btn-dark" (click)="Review_Submit(order)">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ import { Base } from '../Models/BaseUrl';
 import { Category } from '../Models/Category';
 import { service } from '../Models/Services';
 import { subservice } from '../Models/SubService';
+import { Provider } from '../Models/Provider';
 
 
 @Injectable({
@@ -19,9 +20,9 @@ export class CategoryService {
   B  = new Base();
   
   
-  GetCategory(categoryId:number):Observable<string>
+  GetCategory(category:string):Observable<Category>
   {
-    return this.http.get<string>(this.B.BaseUrl+categoryId+"/category",{'headers':new HttpHeaders({'content-type': 'application/json'})});
+    return this.http.get<Category>(this.B.BaseUrl+category+"/category",{'headers':new HttpHeaders({'content-type': 'application/json'})});
   }
 
 
@@ -34,5 +35,29 @@ export class CategoryService {
   {
     return this.http.get<subservice[]>(this.B.BaseUrl+serviceId+"/subservices",{'headers':new HttpHeaders({'content-type': 'application/json'})});
   }
+  
+  GetCategories():Observable<Category[]>
+  {
+    return this.http.get<Category[]>(this.B.BaseUrl+"categories",{'headers':new HttpHeaders({'content-type':'application/json'})});
+  }
+
+  GetServices():Observable<service[]>
+  {
+    return this.http.get<service[]>(this.B.BaseUrl+"services",{'headers':new HttpHeaders({'content-type':'application/json'})});
+  }
+
+  GetSubServices():Observable<subservice[]>
+  {
+    return this.http.get<subservice[]>(this.B.BaseUrl+"subservices",{'headers':new HttpHeaders({'content-type':'application/json'})});
+  }
+
+
+  // To fetch List of provider based on category_name and District/City
+
+  GetProvider_By_Category_City(categroy_name:string , city:string):Observable<Provider[]>
+  {
+    return this.http.get<Provider[]>(this.B.BaseUrl+"provider/"+categroy_name+"/"+city+"/providers",{'headers':new HttpHeaders({'content-type':'application/json'})})
+  }
+
 
 }
