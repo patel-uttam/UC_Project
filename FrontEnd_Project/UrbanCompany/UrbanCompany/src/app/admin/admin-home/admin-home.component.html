@@ -58,8 +58,8 @@
                             <h4>Add New Category</h4>
                             <form [formGroup]="Add_category" >
                                 <label for="cat_input1">Categry Name </label> <input id="cat_input1"  type="text" class="form-control" formControlName="categoryname">
-                                <label for="cat_input2">Logo Image </label> <input id="cat_input2"  type="file" accept="image/*" class="form-control" formControlName="logoimg">
-                                <label for="cat_input3">BackGround Image </label> <input id="cat_input3"  type="file" accept="image/*" class="form-control" formControlName="bgimg">
+                                <label for="cat_input2">Logo Image </label> <input id="cat_input2"  type="file" accept="image/*" class="form-control" formControlName="logoimg" (change)="UpdatePreviewImg($event)">
+                                <label for="cat_input3">BackGround Image </label> <input id="cat_input3"  type="file" accept="image/*" class="form-control" formControlName="bgimg" (change)="UpdatePreviewImg($event)">
                                 <label for="cat_input4">About Category</label> <textarea id="cat_input4" rows="3" class="form-control" placeholder="Add description for category....." formControlName="description"></textarea>
                                 <br>
                                 <button class="btn btn-primary" (click)="Add_Category()">Add</button>

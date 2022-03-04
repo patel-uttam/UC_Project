@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vicky\\Desktop\\Repository\\Uc_Project_Repository\\UC_Project\\BackEnd_Project\\UrbanCompany.API\\UrbanCompany.API\\UrbanCompany.API.csproj": {}
+    "C:\\Users\\uttam.patel\\UC_Project\\UC_Project\\BackEnd_Project\\UrbanCompany.API\\UrbanCompany.API\\UrbanCompany.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vicky\\Desktop\\Repository\\Uc_Project_Repository\\UC_Project\\BackEnd_Project\\UrbanCompany.API\\UrbanCompany.API\\UrbanCompany.API.csproj": {
+    "C:\\Users\\uttam.patel\\UC_Project\\UC_Project\\BackEnd_Project\\UrbanCompany.API\\UrbanCompany.API\\UrbanCompany.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vicky\\Desktop\\Repository\\Uc_Project_Repository\\UC_Project\\BackEnd_Project\\UrbanCompany.API\\UrbanCompany.API\\UrbanCompany.API.csproj",
+        "projectUniqueName": "C:\\Users\\uttam.patel\\UC_Project\\UC_Project\\BackEnd_Project\\UrbanCompany.API\\UrbanCompany.API\\UrbanCompany.API.csproj",
         "projectName": "UrbanCompany.API",
-        "projectPath": "C:\\Users\\vicky\\Desktop\\Repository\\Uc_Project_Repository\\UC_Project\\BackEnd_Project\\UrbanCompany.API\\UrbanCompany.API\\UrbanCompany.API.csproj",
-        "packagesPath": "C:\\Users\\vicky\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vicky\\Desktop\\Repository\\Uc_Project_Repository\\UC_Project\\BackEnd_Project\\UrbanCompany.API\\UrbanCompany.API\\obj\\",
+        "projectPath": "C:\\Users\\uttam.patel\\UC_Project\\UC_Project\\BackEnd_Project\\UrbanCompany.API\\UrbanCompany.API\\UrbanCompany.API.csproj",
+        "packagesPath": "C:\\Users\\uttam.patel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\uttam.patel\\UC_Project\\UC_Project\\BackEnd_Project\\UrbanCompany.API\\UrbanCompany.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\vicky\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\uttam.patel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -99,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
         }
       }
     }

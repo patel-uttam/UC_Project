@@ -151,8 +151,13 @@ export class AdminHomeComponent implements OnInit {
       details: ''
     }
   
+    // define for image
+    Category_logo:any;
+    Category_bg:any;
   
   // //
+
+
 
   // form
 
@@ -233,11 +238,34 @@ export class AdminHomeComponent implements OnInit {
 
   // methods
 
+  // for upload img
+  UpdatePreviewImg(event:Event)
+{
+
+  let img:any = (event.target as HTMLInputElement).files;
+
+  
+  if((event.target as HTMLInputElement).id=="cat_input2" || (event.target as HTMLInputElement).id=="cat_input2")
+  {    
+
+    this.Category_logo = img as File;
+  }
+  else if((event.target as HTMLInputElement).id=="cat_input3")
+  {
+    this.Category_bg = img as File;
+  }
+  console.log("logo" , this.Category_logo , "bg" , this.Category_bg);
+  console.log("Update_Category" , this.Update_category.value)
+  img = null;
+}
+  
+
+
   // set value to category form
   Set_Category(category:Category)
   {
     console.log(category);
-    this.Update_category.setValue({categoryname:category.categoryName,logoimg:category.logoImg==null ? "" :category.logoImg,bgimg:category.bgImg==null ? "" : category.bgImg,description:category.description==null ? '' : category.description});
+    this.Update_category.reset;
     this.category = category as Category;
   }
 
@@ -252,7 +280,8 @@ export class AdminHomeComponent implements OnInit {
       this.category.bgImg = form_value.bgimg;
       this.category.description = form_value.description;
       console.log(this.category);
-      this.admin_service.Update_Category(this.category).subscribe
+      
+      this.admin_service.Update_Category(this.category,this.Category_logo as File,this.Category_bg as File).subscribe
       (
         (Response)=>
         {
@@ -320,11 +349,19 @@ export class AdminHomeComponent implements OnInit {
       bgImg: form_value.bgimg,
       description: form_value.description
     }
-    this.admin_service.Add_Category(category).subscribe
+    this.admin_service.Add_Category(category,this.Category_logo as File,this.Category_bg as File).subscribe
     (
       (Response)=>
       {
-        alert("Category added successful");
+        if(Response == true)
+        {
+          alert("Category added successful");
+        }
+        else
+        {
+          alert("Category not created successfully");
+        }
+
       },
       (error)=>
       {

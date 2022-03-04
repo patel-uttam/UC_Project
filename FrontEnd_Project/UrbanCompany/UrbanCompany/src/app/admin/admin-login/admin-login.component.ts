@@ -15,7 +15,10 @@ export class AdminLoginComponent implements OnInit {
   {
     let unauth =  document.querySelector("#login_unauth") as HTMLElement;
     unauth.style.visibility=`hidden`;
-    
+    if(localStorage.getItem("Jwt") != null)
+    {
+      this.router.navigate(['/Admin']);
+    }
   }
 
   // Function and Form

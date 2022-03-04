@@ -2,7 +2,7 @@ export interface Category
 {
     categoryId:number;
     categoryName:string;
-    logoImg:string;
-    bgImg:string;
+    logoImg:any;
+    bgImg:any;
     description:string;
 }

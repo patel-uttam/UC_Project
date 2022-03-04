@@ -91,6 +91,7 @@ namespace UrbanCompany.API.Controllers
                 {
                     client.Credentials = new NetworkCredential(configuration["Email_Sender_config:Username"], configuration["Email_Sender_config:Password"]);
                     client.EnableSsl = true;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
                     await client.SendMailAsync(mail);
                 }
 

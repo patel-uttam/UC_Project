@@ -22,8 +22,4 @@ export class ManagingUsersAccountService {
     return this.http.post(this.B.BaseUrl+"authentication/confirm-email",emailconfirm,{headers:({'content-type':'application/json'})});
   }
 
-  UpdatePassword()
-  {
-    
-  }
 }

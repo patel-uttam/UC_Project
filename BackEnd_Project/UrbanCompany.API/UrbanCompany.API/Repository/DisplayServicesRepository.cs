@@ -37,7 +37,7 @@ namespace UrbanCompany.API.Repository
         {
             var cat = context.Categories.FirstOrDefault(c => c.CategoryName.ToLower() == category.CategoryName.ToLower());
 
-            if(cat == null)
+            if (cat == null)
             {
                 context.Categories.Add(category);
                 context.SaveChanges();
