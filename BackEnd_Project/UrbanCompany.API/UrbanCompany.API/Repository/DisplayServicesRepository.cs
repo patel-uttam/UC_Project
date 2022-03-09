@@ -121,6 +121,7 @@ namespace UrbanCompany.API.Repository
 
             if (cat != null)
             {
+                cat.CategoryName = category.CategoryName;
                 cat.LogoImg = category.LogoImg;
                 cat.BgImg = category.BgImg;
                 cat.Description = category.Description;

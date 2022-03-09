@@ -110,7 +110,6 @@ export class AuthServiceService {
         }
       }   
     }
-
     return isexpire;
   }
   
@@ -128,7 +127,6 @@ export class AuthServiceService {
     }
     else
     {
-      alert("Authorization is Failed...");
       return false;
     }
   }

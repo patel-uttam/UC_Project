@@ -58,8 +58,8 @@
                             <h4>Add New Category</h4>
                             <form [formGroup]="Add_category" >
                                 <label for="cat_input1">Categry Name </label> <input id="cat_input1"  type="text" class="form-control" formControlName="categoryname">
-                                <label for="cat_input2">Logo Image </label> <input id="cat_input2"  type="file" accept="image/*" class="form-control" formControlName="logoimg" (change)="UpdatePreviewImg($event)">
-                                <label for="cat_input3">BackGround Image </label> <input id="cat_input3"  type="file" accept="image/*" class="form-control" formControlName="bgimg" (change)="UpdatePreviewImg($event)">
+                                <label for="cat_input2">Logo Image </label> <input id="cat_input2"  type="file" accept="image/*" class="form-control" formControlName="logoimg" (change)="CategoryUpdatePreviewImg($event)">
+                                <label for="cat_input3">BackGround Image </label> <input id="cat_input3"  type="file" accept="image/*" class="form-control" formControlName="bgimg" (change)="CategoryUpdatePreviewImg($event)">
                                 <label for="cat_input4">About Category</label> <textarea id="cat_input4" rows="3" class="form-control" placeholder="Add description for category....." formControlName="description"></textarea>
                                 <br>
                                 <button class="btn btn-primary" (click)="Add_Category()">Add</button>
@@ -113,37 +113,40 @@
                     <a class="btn btn-secondary nav-link nav-item nav-item-action" data-toggle="tab" href="#s_ser">SubServices</a>
                 </div>
                 <div class="tab-content">
-                    <div id="cat" class="tab-pane active" >
+                    <div id="cat" class="tab-pane active mx-auto" >
                         <div class="container-fluid mt-5">
-                            <div *ngFor="let cat of Categories; index as i">
+                            <div *ngFor="let cat of Categories | paginate:{id:'paginate_category',itemsPerPage:5,currentPage:currentpage_cateogry}; index as i">
                                 <div class="container-fluid mx-auto py-1 row">
-                                    <div *ngIf="i==0" class="col-10 row mb-4 text-center">
+                                    <div *ngIf="i==0" class="col-10 row mb-4 text-center justify-content-around">
                                         <b class="col-2 text-center">ID</b>
-                                        <b class="col-4 text-center">Name</b>
+                                        <b class="col-2 text-center">Name</b>
                                         <b class="col-4 text-center">About</b>
+                                        <b class=" text-center">Logo_Preview</b>
                                     </div>
-                                    <div class="col-10 row text-center border">
+                                    <div class="col-10 row text-center border justify-content-around">
                                         <p class="col-2 text-center">{{cat.categoryId}}</p>
-                                        <p class="col-4 text-center">{{cat.categoryName}}</p>
+                                        <p class="col-2 text-center">{{cat.categoryName}}</p>
                                         <p class="col-4 text-center">{{cat.description}}</p>
+                                        <img class="justify-content-center" src="{{cat.logoImg}}" alt="logo" style="width:50px; height:50px;">
                                     </div>
                                     <div class="col-2 row justify-content-end">
                                         <button class="btn btn-primary" data-toggle="modal" data-target="#update_category" (click)="Set_Category(cat)"><i class="fa fa-edit p-1 "></i></button>&nbsp;&nbsp;
                                     </div>
                                 </div>
                             </div>
+                            <pagination-controls id="paginate_category" (pageChange)="currentpage_cateogry = $event" [autoHide]="true"></pagination-controls>
                         </div>
                     </div>
                     <div id="ser" class="tab-pane" >
                         <div class="container-fluid mt-5">
-                            <div *ngFor="let ser of Services; index as i">
+                            <div *ngFor="let ser of Services | paginate:{id:'paginate_service',itemsPerPage:5,currentPage:currentpage_service}; index as i">
                                 <div class="container-fliud mx-auto py-1 row">
-                                    <div *ngIf="i==0" class="col-10 row mb-4 text-center">
+                                    <div *ngIf="i==0" class="col-10 row mb-4 text-center justify-content-around">
                                         <b class="col-3 text-center">ID</b>
                                         <b class="col-5 text-center">Name</b>
                                         <b class="col-2 text-center">Rating</b>
                                     </div>
-                                    <div class="col-10 row text-center border">
+                                    <div class="col-10 row text-center border justify-content-around">
                                         <p class="col-3 text-center">{{ser.serviceId}}</p>
                                         <p class="col-5 text-center">{{ser.serviceName}}</p>
                                         <p class="col-2 text-center">{{ser.rating==null ? 0 : ser.rating}}</p>
@@ -152,29 +155,34 @@
                                     </div>
                                 </div>
                             </div>
+                            <pagination-controls id="paginate_service" (pageChange)="currentpage_service = $event" [autoHide]="true"></pagination-controls>
                         </div>
                     </div>
                     <div id="s_ser" class="tab-pane" >
                         <div class="container-fluid mt-5">
-                            <div *ngFor="let s_ser of SubServices; index as i">
-                                <div *ngIf="i==0" class="col-10 row mb-4 text-center; index as i">
-                                    <b class="col-2 text-center">ID</b>
-                                    <b class="col-4 text-center">Name</b>
-                                    <b class="col-2 text-center">Cost</b>
-                                    <b class="col-2 text-center">Discount</b>
-                                </div>
-                                <div class="container-fliud mx-auto py-1 row">
-                                    <div class="col-10 row text-center border">
-                                        <p class="col-2 text-center">{{s_ser.subServiceId}}</p>
+                            <div *ngFor="let s_ser of SubServices  | paginate :{ id:'paginate_subservice', itemsPerPage: 5, currentPage:currentpage_subservice } index as i">
+                                <div class="row mb-4">
+                                    <div *ngIf="i==0" class="col-10 row mb-4 text-center justify-content-around">
+                                        <b class="col-1 text-center">ID</b>
+                                        <b class="col-4 text-center">Name</b>
+                                        <b class="col-2 text-center">Cost</b>
+                                        <b class="col-1 text-center">Discount</b>
+                                        <b class="col-1 text-center">Rating</b>
+                                    </div>
+                                    <div class="col-10 row text-center border justify-content-around">
+                                        <p class="col-1 text-center">{{s_ser.subServiceId}}</p>
                                         <p class="col-4 text-center">{{s_ser.subServiceName}}</p>
                                         <p class="col-2 text-center">{{s_ser.cost}}</p>
-                                        <p class="col-2 text-center">{{s_ser.discount}}</p>
+                                        <p class="col-1 text-center">{{s_ser.discount}}</p>
+                                        <p class="col-1 text-center">{{s_ser.rating}}</p>
                                     </div>
                                     <div class="col-2 row justify-content-end">
                                         <button class="btn btn-primary" data-toggle="modal" data-target="#update_subservice" (click)="Set_SubService(s_ser)"><i class="fa fa-edit p-1 "></i></button>&nbsp;&nbsp;
                                     </div>
+    
                                 </div>
                             </div>
+                            <pagination-controls id="paginate_subservice" (pageChange)="currentpage_subservice = $event" [autoHide]="true"></pagination-controls>
                         </div>
                     </div>
                 </div>
@@ -317,8 +325,8 @@
             <div class="modal-body">
                 <form [formGroup]="Update_category">
                     <label for="cat_input1">Categry Name </label> <input id="cat_input1"  type="text" class="form-control" formControlName="categoryname">
-                    <label for="cat_input2">Logo Image </label> <input id="cat_input2"  type="file" accept="image/*" class="form-control" formControlName="logoimg">
-                    <label for="cat_input3">BackGround Image </label> <input id="cat_input3"  type="file" accept="image/*" class="form-control" formControlName="bgimg">
+                    <label for="cat_input2">Logo Image </label> <input id="cat_input2"  type="file" accept="image/*" class="form-control" formControlName="logoimg" (change)="CategoryUpdatePreviewImg($event)">
+                    <label for="cat_input3">BackGround Image </label> <input id="cat_input3"  type="file" accept="image/*" class="form-control" formControlName="bgimg" (change)="CategoryUpdatePreviewImg($event)">
                     <label for="cat_input4">About Category</label> <textarea id="cat_input4" rows="3" class="form-control" placeholder="Add description for category....." formControlName="description"></textarea>
                 </form>
             </div><br>

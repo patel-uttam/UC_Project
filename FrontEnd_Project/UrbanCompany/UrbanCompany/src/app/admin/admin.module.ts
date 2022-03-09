@@ -9,7 +9,7 @@ import { AdminProviderComponent } from './admin-provider/admin-provider.componen
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     AdminRoutingModule
   ]
 })

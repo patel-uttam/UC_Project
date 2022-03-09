@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -107,6 +107,9 @@ export class AdminHomeComponent implements OnInit {
 
   // variables and object
 
+  currentpage_cateogry:number=1;
+  currentpage_service:number=1;
+  currentpage_subservice:number=1;
 
   // data field for country ,state , acity ,area
     countries:country[]=[];
@@ -151,13 +154,11 @@ export class AdminHomeComponent implements OnInit {
       details: ''
     }
   
-    // define for image
     Category_logo:any;
     Category_bg:any;
-  
+
+    category_formdata:FormData = new FormData();
   // //
-
-
 
   // form
 
@@ -190,7 +191,7 @@ export class AdminHomeComponent implements OnInit {
 
   // Update Category
   Update_category = new FormGroup({
-    categoryname:new FormControl({value:'',disabled:true}),
+    categoryname:new FormControl('',[Validators.required]),//{value:'',disabled:true}
     logoimg:new FormControl(),
     bgimg:new FormControl(),
     description:new FormControl()
@@ -198,8 +199,8 @@ export class AdminHomeComponent implements OnInit {
 
   // update subservice
   Update_subservice = new FormGroup({
-    subservicename:new FormControl({value:'',disabled:true}),
-    service:new FormControl({value:'',disabled:true}),
+    subservicename:new FormControl('',[Validators.required]),
+    service:new FormControl('',[Validators.required]),
     cost:new FormControl('',Validators.required),
     discount:new FormControl(),
     servicetime:new FormControl(),
@@ -238,35 +239,62 @@ export class AdminHomeComponent implements OnInit {
 
   // methods
 
-  // for upload img
-  UpdatePreviewImg(event:Event)
+  // for preview category img
+CategoryUpdatePreviewImg(event:any)
 {
 
-  let img:any = (event.target as HTMLInputElement).files;
-
+  let img:File = event.target.files[0];
   
   if((event.target as HTMLInputElement).id=="cat_input2" || (event.target as HTMLInputElement).id=="cat_input2")
-  {    
-
-    this.Category_logo = img as File;
+  {
+    this.Category_logo = img;
   }
   else if((event.target as HTMLInputElement).id=="cat_input3")
   {
-    this.Category_bg = img as File;
+    this.Category_bg = img;
   }
+  this.category_formdata.append('logo',this.Category_logo);
+  this.category_formdata.append('backgroundimage',this.Category_bg);
+
   console.log("logo" , this.Category_logo , "bg" , this.Category_bg);
   console.log("Update_Category" , this.Update_category.value)
-  img = null;
+
 }
+
+// for preview subservice images
+SubserviceUpdatePreviewImg(event:any)
+{
+
+  let img:File = event.target.files[0];
   
+  if((event.target as HTMLInputElement).id=="cat_input2")
+  {
+    this.Category_logo = img;
+  }
+  else if((event.target as HTMLInputElement).id=="cat_input3")
+  {
+    this.Category_bg = img;
+  }   
+  this.category_formdata.append('logo',this.Category_logo != null ? this.Category_logo : null);
+  this.category_formdata.append('backgroundimage',this.Category_logo != null ? this.Category_logo : null);
+
+  console.log("logo" , this.Category_logo , "bg" , this.Category_bg);
+  console.log("Update_Category" , this.Update_category.value)
+
+}
+
 
 
   // set value to category form
   Set_Category(category:Category)
   {
     console.log(category);
-    this.Update_category.reset;
     this.category = category as Category;
+
+    this.Update_category.controls['categoryname'].setValue(category.categoryName);
+    this.Update_category.controls['description'].setValue(category.description);
+
+    // this.Update_category.setValue({categoryname:category.categoryName,logoimg:logofile.name,bgimg:bgfile.name,description:category.description});
   }
 
   // update categroy
@@ -276,12 +304,14 @@ export class AdminHomeComponent implements OnInit {
     {
       let form_value = this.Update_category.value;
       
+      this.category.categoryName = form_value.categoryname;
       this.category.logoImg = form_value.logoimg;
       this.category.bgImg = form_value.bgimg;
       this.category.description = form_value.description;
-      console.log(this.category);
+      console.log(this.category.categoryId );
+      this.category_formdata.append("category",JSON.stringify(this.category));
       
-      this.admin_service.Update_Category(this.category,this.Category_logo as File,this.Category_bg as File).subscribe
+      this.admin_service.Update_Category(this.category_formdata).subscribe
       (
         (Response)=>
         {
@@ -300,8 +330,16 @@ export class AdminHomeComponent implements OnInit {
   Set_SubService(ss:subservice)
   {
     console.log(ss);
-    this.Update_subservice.setValue({subservicename:ss.subServiceName,service:ss.serviceId,cost:ss.cost,discount: ss.discount ,servicetime: ss.serviceTime ,img1: ss.img1,img2: ss.img2,img3: ss.img3,detail: ss.details});
     this.subservice = ss as subservice;
+    this.Update_subservice.setValue({subservicename:ss.subServiceName,
+    service:ss.serviceId,
+    cost:ss.cost,
+    discount:ss.discount,
+    servicetime:ss.serviceTime,
+    img1:ss.img1,
+    img2:ss.img2,
+    img3:ss.img3,
+    detail:ss.details}) ;
   }
 
   // update subservice
@@ -345,14 +383,17 @@ export class AdminHomeComponent implements OnInit {
     let category:Category={
       categoryId: 0,
       categoryName: form_value.categoryname,
-      logoImg: form_value.logoimg,
-      bgImg: form_value.bgimg,
+      logoImg: "",
+      bgImg: "",
       description: form_value.description
     }
-    this.admin_service.Add_Category(category,this.Category_logo as File,this.Category_bg as File).subscribe
+    this.category_formdata.append("category",JSON.stringify(category));
+
+    this.admin_service.Add_Category(this.category_formdata).subscribe
     (
       (Response)=>
       {
+        console.log(Response);
         if(Response == true)
         {
           alert("Category added successful");
@@ -412,7 +453,6 @@ export class AdminHomeComponent implements OnInit {
       rating: 0,
       details: form_value.detail
     };
-    console.log(form_value);
     this.admin_service.Add_SubService(subservice).subscribe
     (
       (Response)=>

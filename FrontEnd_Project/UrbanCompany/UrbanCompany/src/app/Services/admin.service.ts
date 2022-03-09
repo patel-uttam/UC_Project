@@ -52,14 +52,9 @@ export class AdminService {
 
   // category ,service ,sub service
 
-  Add_Category(category:Category,logo:File,bg:File)
+  Add_Category(categorydata:FormData)
   {
-    const categorydata = new FormData();
-    categorydata.append('category',JSON.stringify(category));
-    categorydata.append('logo',logo);
-    categorydata.append('background-image',bg);
 
-    console.log(categorydata.get('category') , category , logo , bg);
     return this.http.post(this.B.BaseUrl+"new/category",categorydata,{headers:new HttpHeaders({"Authorization":"Bearer "+this.t})});
   }
   
@@ -79,16 +74,9 @@ export class AdminService {
     return this.http.put(this.B.BaseUrl+"changes/subservice",subservice,{headers:new HttpHeaders({"content-type":"application/json" , "Authorization":"Bearer "+this.t})});
   }
 
-  Update_Category(category:Category,logo:File,bg:File)
+  Update_Category(categorydata:FormData)
   {
-    let categorydata = new FormData();
-    categorydata.append("category",JSON.stringify(category));
-    
-    categorydata.append("logo",JSON.stringify(logo));
-    categorydata.append("background-image",JSON.stringify(bg));
-    
-    console.log(categorydata);
-    return this.http.put(this.B.BaseUrl+"changes/category",categorydata,{headers:new HttpHeaders({"content-type":"application/json" , "Authorization":"Bearer "+this.t})});
+    return this.http.put(this.B.BaseUrl+"changes/category",categorydata,{headers:new HttpHeaders({"Authorization":"Bearer "+this.t})});
   }
 
 

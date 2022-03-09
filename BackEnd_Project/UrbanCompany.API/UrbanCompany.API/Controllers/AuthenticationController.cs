@@ -314,7 +314,7 @@ namespace UrbanCompany.API.Controllers
                     return BadRequest(new 
                     {
                         status = StatusCodes.Status400BadRequest,
-                        title = "Email Not Verified \n Registration fail"
+                        title = "Email Not Verified '\n' Registration fail"
                     });
                 }
             }

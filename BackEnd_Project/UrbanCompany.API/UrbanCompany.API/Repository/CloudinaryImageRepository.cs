@@ -34,7 +34,43 @@ namespace UrbanCompany.API.Repository
                 var uploadparams = new ImageUploadParams
                 {
                     File = new FileDescription(image.FileName, stream),
-                    PublicId = "Categories/"+String.Join('_',image.FileName.Split('.')),
+                    PublicId = String.Join('_',image.FileName.Split('.')),
+                    Overwrite = false
+                };
+                Isupload = await cloudinary.UploadAsync(uploadparams);
+            }
+            return Isupload;
+        }
+
+        public async Task<ImageUploadResult> CategoryUploadImage(IFormFile image)
+        {
+            var Isupload = new ImageUploadResult();
+
+            if (image.Length > 0)
+            {
+                using var stream = image.OpenReadStream();
+                var uploadparams = new ImageUploadParams
+                {
+                    File = new FileDescription(image.FileName, stream),
+                    PublicId = "Categories/" + String.Join('_', image.FileName.Split('.')),
+                    Overwrite = false
+                };
+                Isupload = await cloudinary.UploadAsync(uploadparams);
+            }
+            return Isupload;
+        }
+
+        public async Task<ImageUploadResult> SubServiceUploadImage(IFormFile image)
+        {
+            var Isupload = new ImageUploadResult();
+
+            if (image.Length > 0)
+            {
+                using var stream = image.OpenReadStream();
+                var uploadparams = new ImageUploadParams
+                {
+                    File = new FileDescription(image.FileName, stream),
+                    PublicId = "SubServices/" + String.Join('_', image.FileName.Split('.')),
                     Overwrite = false
                 };
                 Isupload = await cloudinary.UploadAsync(uploadparams);

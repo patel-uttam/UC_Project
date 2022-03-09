@@ -128,7 +128,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 " *ngFor="let C of categories; index as i">
                     <div class="m-1">
                         <a [routerLink]="['../',selected_location==null ?'':selected_location ,C.categoryName]" class="p-1 m-2 d-flex flex-column justify-content-center">
-                            <img src="../../assets/Images/{{C.bgImg}}" alt="" style="width: 40px; height: 40px;" class="mb-2 bg-light align-self-center">
+                            <img src="{{C.logoImg}}" alt="" style="width: 40px; height: 40px;" class="mb-2 bg-light align-self-center">
                             <h5 class="text-center align-self-center text-dark" style="width: fit-content; font-size: 13px;">{{C.categoryName}}</h5>
                         </a>
                     </div>
@@ -232,7 +232,7 @@
      <div class="container-fluid" id="best_offers">
           <div class="d-flex flex-column mb-5" id="best_offers_title">
               <h2 class="align-self-center">Best Offers</h2>
-              <p class="align-self-center faded_para">Hygenic & single-use products | low-cost services</p>
+              <p class="align-self-center text-muted">Hygenic & single-use products | low-cost services</p>
           </div>
           <div class="container-fluid py-3 m-0 ">
               <div class="container">
@@ -240,22 +240,22 @@
                       <div class=" d-flex flex-column mx-2 div_highlighted">
                           <img src="../../assets/Images/main_home_best offer_1.jpeg"style="border-radius: 5px;" alt="" width="260px" height="149px">
                           <b class="mt-3 align-self-center">Salon At Home For Women</b>
-                          <p class="align-self-center faded_para">Free Waxing</p>
+                          <p class="align-self-center text-muted">Free Waxing</p>
                       </div>
                       <div class=" d-flex flex-column mx-2 div_highlighted" >
                           <img src="../../assets/Images/main_home_best offer_2.jpeg"style="border-radius: 5px;" alt="" width="260px" height="149px">
                           <b class="mt-3 align-self-center">Bathroom Cleaning</b>
-                          <p class="align-self-center faded_para">Upto 30% off</p>
+                          <p class="align-self-center text-muted">Upto 30% off</p>
                       </div>
                       <div class=" d-flex flex-column mx-2 div_highlighted" >
                           <img src="../../assets/Images/main_home_best offer_3.jpg" style="border-radius: 5px;"alt="" width="260px" height="149px">
                           <b class="mt-3 align-self-center">Massage Therapy For Women</b>
-                          <p class="align-self-center faded_para">Free Head Massage</p>
+                          <p class="align-self-center text-muted">Free Head Massage</p>
                       </div>
                       <div class=" d-flex flex-column mx-2 div_highlighted" >
                           <img src="../../assets/Images/main_home_best offer_4.jpeg" style="border-radius: 5px;"alt="" width="260px" height="149px">
                           <b class="mt-3 align-self-center">Salon For Men</b>
-                          <p class="align-self-center faded_para">Flat ₹100 off</p>
+                          <p class="align-self-center text-muted">Flat ₹100 off</p>
                       </div>
                   </div>
               </div>
@@ -271,7 +271,7 @@
       <div class="container-fluid" id="cleaning_pest-control">
            <div class="d-flex flex-column" id="cleaning_pest-control_title">
                <h2 class="align-self-center">Cleaning & Pest Control</h2>
-               <p class="align-self-center faded_para">Removes hard stains & more</p>
+               <p class="align-self-center text-muted">Removes hard stains & more</p>
            </div>        
       </div> 
       <div class="carousel-container-clean-slider container mx-auto ">
@@ -320,7 +320,7 @@
       <div class="container-fluid" id="appliances">
            <div class="d-flex flex-column mb-5" id="appliances_title">
                <h2 class="align-self-center">Appliances</h2>
-               <p class="align-self-center faded_para">Servicing, Repair,Installation & Uninstallation</p>
+               <p class="align-self-center text-muted">Servicing, Repair,Installation & Uninstallation</p>
            </div>
            <div class="container-fluid py-3 px-0 m-0 ">
                <div class="container">
@@ -328,22 +328,22 @@
                        <div class="d-flex flex-column div_highlighted  mx-2 ">
                            <img src="../../assets/Images/main_home_appliances_1.jpg"style="border-radius: 5px;" alt="" width="260px" height="149px">
                            <b class="mt-3 align-self-center">Air Conditioner</b>
-                           <p class="align-self-center faded_para">Upto 30% Off</p>
+                           <p class="align-self-center text-muted">Upto 30% Off</p>
                        </div>
                        <div class="d-flex flex-column div_highlighted  mx-2 ">
                            <img src="../../assets/Images/main_home_appliances_2.jpg"style="border-radius: 5px;" alt="" width="260px" height="149px">
                            <b class="mt-3 align-self-center">Refrigerator</b>
-                           <p class="align-self-center faded_para"></p>
+                           <p class="align-self-center text-muted"></p>
                        </div>
                        <div class="d-flex flex-column div_highlighted  mx-2 ">
                            <img src="../../assets/Images/main_home_appliances_3.jpg" style="border-radius: 5px;"alt="" width="260px" height="149px">
                            <b class="mt-3 align-self-center">Water Purifier</b>
-                           <p class="align-self-center faded_para">Upto 45% Off</p>
+                           <p class="align-self-center text-muted">Upto 45% Off</p>
                        </div>
                        <div class="d-flex flex-column div_highlighted  mx-2 ">
                            <img src="../../assets/Images/main_home_appliances_4.jpg" style="border-radius: 5px;"alt="" width="260px" height="149px">
                            <b class="mt-3 align-self-center">Washing Machine</b>
-                           <p class="align-self-center faded_para"></p>
+                           <p class="align-self-center text-muted"></p>
                        </div>
                    </div>
                </div>
@@ -358,7 +358,7 @@
           <div class="container-fluid" id="cleaning_pest-control">
                <div class="d-flex flex-column" id="cleaning_pest-control_title">
                    <h2 class="align-self-center">Customer safety is our priority</h2>
-                   <p class="align-self-center faded_para">What customers are saying about our safety standards</p>
+                   <p class="align-self-center text-muted">What customers are saying about our safety standards</p>
                </div>        
           </div> 
           <div class="carousel-container-customerreview-slider container mx-auto ">
@@ -406,7 +406,7 @@
   
       <hr class="container-fluid py-2 px-0 hr_class">
   
-  <!-- insurance add  -->
+  <!-- insurance advertisment  -->
   <div class="container-fluid m-0 p-0">
       <!-- <hr class="bg-dark h-100"> -->
       <div class="container-fluid m-0 p-0">
@@ -416,7 +416,7 @@
   
   <hr class="container-fluid py-2 px-0 hr_class">
   
-  <!-- skill india add -->
+  <!-- skill india advertisment -->
   
   <div class="container-fluid m-0 p-0">
       <!-- <hr class="bg-dark h-100"> -->

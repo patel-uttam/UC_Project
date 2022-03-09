@@ -10,5 +10,8 @@ namespace UrbanCompany.API.Repository
     public interface ICloudinaryImageRepository
     {
         public Task<ImageUploadResult> UploadImage(IFormFile image);
+        public Task<ImageUploadResult> CategoryUploadImage(IFormFile image);
+        public Task<ImageUploadResult> SubServiceUploadImage(IFormFile image);
+
     }
 }

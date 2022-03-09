@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { HeaderComponent } from './header/header.component';
 import { SalonForWomenComponent } from './salon-for-women/salon-for-women.component';
@@ -58,6 +59,7 @@ import { StatisticDataService } from './Services/statistic-data.service';
     NgbModule,
     HttpClientModule,
     NgbModule,
+    NgxPaginationModule,
     ProviderModule,
     AdminModule,
     ProviderRoutingModule,
