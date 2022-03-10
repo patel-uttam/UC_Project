@@ -6,8 +6,8 @@ using UrbanCompany.API.Models;
 
 namespace UrbanCompany.API.Repository
 {
-    public interface ISearchbarFilter
+    public interface ISearchbarFilterRepository
     {
-        public IEnumerable<Category> GetSearchResult(string searchvalue);
+        public IEnumerable<SearchbarFilter> GetSearchResult(string searchvalue);
     }
 }

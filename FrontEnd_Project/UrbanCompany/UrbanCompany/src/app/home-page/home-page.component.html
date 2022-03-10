@@ -99,12 +99,19 @@
 
                           &nbsp;
                           <div class="col-lg-6 col-12 ms-2 mt-2">
-                              <div class="container m-0 p-0 d-flex justify-content-center" >
-                                  <div class="bg-white d-flex p-0 mt-0 w-100 rounded" >
-                                  <i class="bi bi-search mt-0 p-2 bg--white"></i>
-                                  <input type="text" class="form-control border-left-0 border-right-0 border-top-0 border-bottom-0 p-2 h-100 " placeholder="Search for Services........">
-                                  </div>                
-                                </div>
+                                <div class="container m-0 p-0 justify-content-center" >
+                                    <div class="bg-white d-flex p-0 mt-0 w-100 rounded" >
+                                    <i class="bi bi-search mt-0 p-2 bg--white"></i>
+                                    <input type="text" class="form-control shadow-none border-left-0 border-right-0 border-top-0 border-bottom-0 p-2 h-100 " placeholder="Search for Services........" (keyup)="SearchResult($event)">                                  
+                                    </div>
+                                 </div>
+                                 <div class="container w-75 m-0 p-0 search-result" style="position: absolute;">
+                                      <div class="container-fliud m-0 p-0 " *ngFor="let result of searchresult; index as i">
+                                        <div class="m-0 p-0" *ngIf="i<3">
+                                            <a [routerLink]="['../',selected_location==null ?'':selected_location ,result.categoryName]" class="m-0 p-1 nav-link form-control shadow-none w-100" >{{result.categoryName}}</a>
+                                        </div>
+                                      </div>
+                                  </div>
                               <div>
                                   <ul class="d-flex text-light m-0 pl-0" type="none">
                                   <li><a href="" class="text-light">Plumbers</a></li> &nbsp; , &nbsp;

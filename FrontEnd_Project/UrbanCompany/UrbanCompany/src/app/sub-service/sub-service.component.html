@@ -14,9 +14,11 @@
                     <p><span class="fa fa-star checked"></span>{{X.rating}}</p>
                     <span><span class="mx-2 my-1">{{X.cost-X.discount | currency:'INR':'symbol'}}</span> <span><del>{{X.cost | currency:'INR':'symbol'}}</del></span></span>
                     <p></p>
-                        <div id="details_div" class="m-0 p-0">
-                            <div class="p-1 card-body text-secondary bg-light" *ngFor="let detail of X.details.split('#')">
-                                <li>{{detail}}</li>
+                        <div id="details_div" class="m-0 p-0" *ngIf="X.details!=null">
+                            <div class="m-0 p-0" >
+                                <div class="p-1 card-body text-secondary bg-light" *ngFor="let detail of X.details.split('#')">
+                                    <li>{{detail}}</li>
+                                </div>
                             </div>
                         </div>
             </div>

@@ -10,6 +10,8 @@ import { Category } from '../Models/Category'
 import { CategoryService } from '../Services/category.service';
 import { AddressServiceService } from '../Services/address-service.service';
 import { AddressDisplay } from '../Models/AddressDisplay';
+import { SearchFilter } from '../Models/SearchFilter';
+import { FilterServiceService } from '../Services/filter-service.service';
 
 @Component({
   selector: 'app-home-page',
@@ -20,7 +22,7 @@ import { AddressDisplay } from '../Models/AddressDisplay';
 
 export class HomePageComponent implements OnInit {
 
-  constructor(private router : Router , private auth_service : AuthServiceService ,private category_service:CategoryService , private address_service:AddressServiceService) 
+  constructor(private router : Router , private auth_service : AuthServiceService ,private category_service:CategoryService , private address_service:AddressServiceService , private searchfilter:FilterServiceService) 
   {
   }
 
@@ -32,7 +34,7 @@ export class HomePageComponent implements OnInit {
   location:AddressDisplay={addressLine:"",country:"",state:"",city:"",area:"",pincode:0};
   locations:AddressDisplay[]=[];
   categories:Category[]=[]
-  
+  searchresult:SearchFilter[]=[];
   //
 
   // Function
@@ -166,6 +168,22 @@ export class HomePageComponent implements OnInit {
     {
       this.Addresses();
     }
+  }
+
+  SearchResult(event:Event)
+  {
+    let value:string = (event.target as HTMLInputElement).value;
+    this.searchfilter.GetSearchResult(value).subscribe
+    (
+      (Response)=>
+      {
+        this.searchresult = Response as SearchFilter[];
+      },
+      (error)=>
+      {
+        console.log(error);
+      }
+    );
   }
   
   // //

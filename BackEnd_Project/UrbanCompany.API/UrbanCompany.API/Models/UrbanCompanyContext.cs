@@ -33,6 +33,8 @@ namespace UrbanCompany.API.Models
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<SubService> SubServices { get; set; }
 
+        public DbSet<SearchbarFilter> searchbarFilters { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

@@ -55,6 +55,7 @@ namespace UrbanCompany.API
             services.AddScoped<IReviewRatingRepository,ReviewRatingRepository>();
             services.AddScoped<IEmailOtpRepository, EmailOtpRepository>();
             services.AddScoped<ICloudinaryImageRepository,CloudinaryImageRepository>();
+            services.AddScoped<ISearchbarFilterRepository,SearchbarFilterRepository>();
 
             services.AddIdentity<Users, IdentityRole>(opt=> {
                 opt.SignIn.RequireConfirmedEmail = true;
