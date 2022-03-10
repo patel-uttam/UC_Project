@@ -7,8 +7,10 @@
     <div class="mx-1 p-1 bg-white" *ngFor="let X of subservices; index as i">
         <div class="container-fluid m-0 p-2 bg-light row justify-content-between rounded">
             <div class="col-auto m-2">
-                <div class="m-1 p-0 ">
-                    <img src="{{img}}" alt="img" style="width: 84px; height: 54px; border-radius: 5px;">
+                <div class="mx-1 row d-flex flex-wrap">
+                    <div class="m-1" *ngFor="let img of [X.img1,X.img2,X.img3]">
+                        <img *ngIf="img!=null" src="{{img}}" alt="img" style="width: 84px; height: 54px; border-radius: 5px;">
+                    </div>
                 </div>  
                     <h4 class="font-italic mx-2 my-2">{{X.subServiceName}}</h4>
                     <p><span class="fa fa-star checked"></span>{{X.rating}}</p>
