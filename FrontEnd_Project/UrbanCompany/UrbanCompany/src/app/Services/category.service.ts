@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay, Subject } from 'rxjs';
 
 import { Base } from '../Models/BaseUrl';
 import { Category } from '../Models/Category';
@@ -19,7 +19,12 @@ export class CategoryService {
 
   B  = new Base();
   
+  // variables
+
+  // providers = new Subject<Provider>(); 
   
+  // methods
+
   GetCategory(category:string):Observable<Category>
   {
     return this.http.get<Category>(this.B.BaseUrl+category+"/category",{'headers':new HttpHeaders({'content-type': 'application/json'})});
@@ -38,7 +43,7 @@ export class CategoryService {
   
   GetCategories():Observable<Category[]>
   {
-    return this.http.get<Category[]>(this.B.BaseUrl+"categories",{'headers':new HttpHeaders({'content-type':'application/json'})});
+    return this.http.get<Category[]>(this.B.BaseUrl+"categories",{'headers':new HttpHeaders({'content-type':'application/json'})})
   }
 
   GetServices():Observable<service[]>
@@ -54,9 +59,9 @@ export class CategoryService {
 
   // To fetch List of provider based on category_name and District/City
 
-  GetProvider_By_Category_City(categroy_name:string , city:string):Observable<Provider[]>
+  GetProvider_By_Category_City(categroy_name:string , city:string)
   {
-    return this.http.get<Provider[]>(this.B.BaseUrl+"provider/"+categroy_name+"/"+city+"/providers",{'headers':new HttpHeaders({'content-type':'application/json'})})
+    return this.http.get<Provider[]>(this.B.BaseUrl+"provider/"+categroy_name+"/"+city+"/providers",{'headers':new HttpHeaders({'content-type':'application/json'})});
   }
 
 

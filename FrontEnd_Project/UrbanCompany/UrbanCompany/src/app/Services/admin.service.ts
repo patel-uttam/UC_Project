@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay, Subject } from 'rxjs';
 import { Base } from '../Models/BaseUrl';
 import { Category } from '../Models/Category';
 import { Customer } from '../Models/Customer';
@@ -15,10 +15,21 @@ export class AdminService {
 
   constructor(private http:HttpClient) 
   {
+    // check for is authentice
     if(localStorage.getItem("Jwt")!=null)
     {
       this.t=localStorage.getItem("Jwt")?.toString();
     }
+
+    // methods call
+    this.GetCustomers().subscribe
+    (
+      Response => 
+      {
+        console.log(Response);
+        this.customers.next(Response as Customer[]);
+      }
+    );
   }
 
   // variables and object
@@ -26,12 +37,16 @@ export class AdminService {
   t:any
   // //
 
+  customers = new Subject<Customer[]>();
 
   // function
 
-  GetCustomers():Observable<Customer[]>
+  GetCustomers()
   {
-    return this.http.get<Customer[]>(this.B.BaseUrl+"customer"+"/customers",{headers:new HttpHeaders({'content-type':'application/json','Authorization':'Bearer '+this.t})});
+    return this.http.get<Customer[]>(this.B.BaseUrl+"customer"+"/customers",{headers:new HttpHeaders({'content-type':'application/json','Authorization':'Bearer '+this.t})}).pipe
+    (
+      shareReplay(1)
+    )
   }
 
   UpdateCustomer(customer:Customer)

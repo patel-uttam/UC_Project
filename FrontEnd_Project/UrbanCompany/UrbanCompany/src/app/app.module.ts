@@ -8,13 +8,14 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HeaderComponent } from './header/header.component';
 import { SalonForWomenComponent } from './salon-for-women/salon-for-women.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AuthServiceService } from './Services/auth-service.service';
 import { LoginComponent } from './login/login.component';
-
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogOutComponent } from './log-out/log-out.component';
 import { ProviderRoutingModule } from './provider/provider-routing.module';
@@ -33,7 +34,6 @@ import { AdminRoutingModule } from './admin/admin-routing.module';
 import { ProviderService } from './Services/provider.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UnauthorizedAccessComponent } from './unauthorized-access/unauthorized-access.component';
-import { CloudinaryModule } from '@cloudinary/ng';
 import { StatisticDataService } from './Services/statistic-data.service';
 
 @NgModule({
@@ -60,6 +60,8 @@ import { StatisticDataService } from './Services/statistic-data.service';
     HttpClientModule,
     NgbModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     ProviderModule,
     AdminModule,
     ProviderRoutingModule,
@@ -71,3 +73,6 @@ import { StatisticDataService } from './Services/statistic-data.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+/// UAN –                                   101795356098
+// PF –                                        GJAHD00587890000010773

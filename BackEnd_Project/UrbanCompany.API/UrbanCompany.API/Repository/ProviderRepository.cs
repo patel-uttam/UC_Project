@@ -115,12 +115,19 @@ namespace UrbanCompany.API.Repository
         // filter for fetch provider based on category_name and district
         public IEnumerable<Provider> GetProviderByCategoryName_City(string category,string city)
         {
-            int cat_id = (int)context.Categories.FirstOrDefault(c => c.CategoryName == category).CategoryId;
-            if (cat_id > 0)
+            try
             {
-                return context.Providers.Where(p => p.Category == cat_id && p.ProviderCity == city);
+                int cat = context.Categories.FirstOrDefault(c => c.CategoryName == category).CategoryId;
+                if (cat > 0)
+                {
+                    return context.Providers.Where(p => p.Category == cat && p.ProviderCity == city);
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+            catch(Exception e)
             {
                 return null;
             }

@@ -6,7 +6,7 @@ import { Login } from '../Models/login';
 import { CustomerService } from '../Services/customer.service';
 import { Customer } from '../Models/Customer';
 import { AddressDisplay } from '../Models/AddressDisplay';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ import { AddressDisplay } from '../Models/AddressDisplay';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private router : Router,  private service : AuthServiceService , private customer_service : CustomerService) { }
+  constructor(private router : Router, private tostr:ToastrService , private service : AuthServiceService , private customer_service : CustomerService) { }
 
   ngOnInit(): void 
   {
@@ -91,6 +91,7 @@ export class LoginComponent implements OnInit {
 
                 }
               )
+              this.tostr.success('Login Success!!');
               this.router.navigate(['']);
             }
 
@@ -103,11 +104,13 @@ export class LoginComponent implements OnInit {
             {
               unauth.style.visibility=`visible`;
               unauth.innerHTML="invalid UserName or PassWord";
+              this.tostr.error('invalid UserName or PassWord');
             }
             else
             {
               unauth.style.visibility=`visible`;
               unauth.innerHTML="Server is Down";
+              this.tostr.info('Server is Down');
             }
           },
           ()=>

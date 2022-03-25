@@ -24,7 +24,6 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  
   ngOnInit(): void 
   {
     this.json = localStorage.getItem("data");
@@ -59,7 +58,7 @@ export class ProfileComponent implements OnInit {
         this.selected_area1 = cust_data.customerArea1;
         this.selected_area2 = cust_data.customerArea2;
         
-        console.log(this.customer)
+        console.log(this.customer);
       }
     )
 
@@ -127,7 +126,31 @@ export class ProfileComponent implements OnInit {
     country : new FormControl(''),
   });
 
+  // method to confirm exit
+  canExit():boolean
+  {
+    let isConfirm:boolean = false;
+
+    if(this.customer_data.untouched )
+    {
+      return isConfirm;
+    }
+    else
+    {
+      if(confirm("Changes are unsave are want to leave ?"))
+      {
+        isConfirm = true;
+        return isConfirm
+      }
+      else
+      {
+        return isConfirm;
+      }
+    }
+
+  }
   
+  // methods to update customer profile 
   Update_Customer()
   {
     if(this.customer_data.valid)
@@ -185,6 +208,7 @@ export class ProfileComponent implements OnInit {
       
               this.customer.customerCountry = cust_data.customerCountry;
               console.log(this.customer);
+              this.customer_data.reset;
             }
           )
         },

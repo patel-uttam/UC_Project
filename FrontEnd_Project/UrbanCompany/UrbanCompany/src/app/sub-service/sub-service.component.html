@@ -14,7 +14,7 @@
                 </div>  
                     <h4 class="font-italic mx-2 my-2">{{X.subServiceName}}</h4>
                     <p><span class="fa fa-star checked"></span>{{X.rating}}</p>
-                    <span><span class="mx-2 my-1">{{X.cost-X.discount | currency:'INR':'symbol'}}</span> <span><del>{{X.cost | currency:'INR':'symbol'}}</del></span></span>
+                    <span><span class="mx-2 my-1">{{X.cost-X.discount | currency:'INR':'symbol'}}</span> <span *ngIf="X.discount>0"><del>{{X.cost | currency:'INR':'symbol'}}</del></span></span>
                     <p></p>
                         <div id="details_div" class="m-0 p-0" *ngIf="X.details!=null">
                             <div class="m-0 p-0" >

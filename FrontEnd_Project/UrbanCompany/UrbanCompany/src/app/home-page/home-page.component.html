@@ -61,7 +61,7 @@
                                         <a routerLink="/OrderService" class="m-2 text-light navbar-item"id="cart">Order Service</a>
                                         <a routerLink="/Profile" class="m-2 text-light navbar-item" id="profile">Profile</a>
                                         <a routerLink="/{{link}}" class="m-2 text-light navbar-item" (click)="Login_Logout()" id="login_logout">Login/Sign up</a>
-                                        <a routerLink="/RegisterAsProvider" class="m-2 text-light navbar-item">Register As A Professional</a>
+                                        <a routerLink="/Service-Provider/SignUp" class="m-2 text-light navbar-item">Register As A Professional</a>
                                       </ul>
                                   </div>
                               </div>
@@ -108,7 +108,7 @@
                                  <div class="container w-75 m-0 p-0 search-result" style="position: absolute;">
                                       <div class="container-fliud m-0 p-0 " *ngFor="let result of searchresult; index as i">
                                         <div class="m-0 p-0" *ngIf="i<3">
-                                            <a [routerLink]="['../',selected_location==null ?'':selected_location ,result.categoryName]" class="m-0 p-1 nav-link form-control shadow-none w-100" >{{result.categoryName}}</a>
+                                            <a [routerLink]="['/',selected_location==null ?'':'Service',selected_location ,result.categoryName]" class="m-0 p-1 nav-link form-control shadow-none w-100" >{{result.categoryName}}</a>
                                         </div>
                                       </div>
                                   </div>
@@ -134,7 +134,7 @@
             <div class="container m-3 row justify-content-around d-flex flex-wrap">
                 <div class="col-lg-2 col-md-4 col-sm-6 " *ngFor="let C of categories; index as i">
                     <div class="m-1">
-                        <a [routerLink]="['../',selected_location==null ?'':selected_location ,C.categoryName]" class="p-1 m-2 d-flex flex-column justify-content-center">
+                        <a [routerLink]="['/',selected_location==null ?'':'Service',selected_location ,C.categoryName]" class="p-1 m-2 d-flex flex-column justify-content-center">
                             <img src="{{C.logoImg}}" alt="" style="width: 40px; height: 40px;" class="mb-2 bg-light align-self-center">
                             <h5 class="text-center align-self-center text-dark" style="width: fit-content; font-size: 13px;">{{C.categoryName}}</h5>
                         </a>

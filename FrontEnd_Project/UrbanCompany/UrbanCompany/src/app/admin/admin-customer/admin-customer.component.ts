@@ -16,12 +16,9 @@ import { AddressServiceService } from 'src/app/Services/address-service.service'
 })
 export class AdminCustomerComponent implements OnInit {
 
-  constructor(private admin_service:AdminService , private address_service:AddressServiceService) { }
-
-  ngOnInit(): void 
-  {
-
-    this.admin_service.GetCustomers().subscribe
+  constructor(private admin_service:AdminService , private address_service:AddressServiceService) 
+  { 
+    this.admin_service.customers.subscribe
     (
       (Response)=>
       {
@@ -35,9 +32,12 @@ export class AdminCustomerComponent implements OnInit {
       {
         console.log(error);
       }
-    )
-    this.GetCountries();
+    );
+  }
 
+  ngOnInit(): void 
+  {
+    this.GetCountries();
   }
 
   // variables

@@ -4,7 +4,7 @@ import * as $  from 'jquery';
 import { FormsModule } from '@angular/forms';
 import { NgModel, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthServiceService } from '../Services/auth-service.service';
 import { Category } from '../Models/Category'
 import { CategoryService } from '../Services/category.service';
@@ -22,7 +22,7 @@ import { FilterServiceService } from '../Services/filter-service.service';
 
 export class HomePageComponent implements OnInit {
 
-  constructor(private router : Router , private auth_service : AuthServiceService ,private category_service:CategoryService , private address_service:AddressServiceService , private searchfilter:FilterServiceService) 
+  constructor(private router : Router , private activatedroute : ActivatedRoute , private auth_service : AuthServiceService ,private category_service:CategoryService , private address_service:AddressServiceService , private searchfilter:FilterServiceService) 
   {
   }
 
@@ -91,23 +91,23 @@ export class HomePageComponent implements OnInit {
   }
 
   // fetching categories
-  GetCategories()
-  {
-    this.category_service.GetCategories().subscribe
-    (
-      (Response)=>
-      { 
-        for(var category of Response as Category[])
-        {
-          this.categories.push(category as Category)
-        }
-      },
-      (error)=>
-      {
-        console.log(error);
-      }
-    );
-  }
+  // GetCategories()
+  // {
+  //   this.category_service.GetCategories().subscribe
+  //   (
+  //     (Response)=>
+  //     { 
+  //       for(var category of Response as Category[])
+  //       {
+  //         this.categories.push(category as Category)
+  //       }
+  //     },
+  //     (error)=>
+  //     {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   // check is logging session expire
   IFLogout()
@@ -145,8 +145,8 @@ export class HomePageComponent implements OnInit {
       booking.style.visibility=`visible`;
 
       let json_location:any = localStorage.getItem("location");
-      let loc:AddressDisplay[] = JSON.parse(json_location) as AddressDisplay[];
-      console.log(localStorage.getItem("location"));
+      let loc = JSON.parse(json_location);
+
       if(loc != null)
       {
         if(loc[0] != null)
@@ -173,6 +173,7 @@ export class HomePageComponent implements OnInit {
   SearchResult(event:Event)
   {
     let value:string = (event.target as HTMLInputElement).value;
+    (event.target as HTMLInputElement).value
     this.searchfilter.GetSearchResult(value).subscribe
     (
       (Response)=>
@@ -203,8 +204,11 @@ export class HomePageComponent implements OnInit {
     cart.style.visibility=`hidden`;
     booking.style.visibility=`hidden`;
     
-    //categories
-    this.GetCategories();
+    // //categories
+    // this.GetCategories();
+
+    this.categories = this.activatedroute.snapshot.data['categories'] as Category[];
+
     //logout
     this.IFLogout();
     //logging
