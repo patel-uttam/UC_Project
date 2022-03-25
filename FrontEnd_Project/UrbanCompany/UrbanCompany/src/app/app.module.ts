@@ -74,5 +74,5 @@ import { StatisticDataService } from './Services/statistic-data.service';
 })
 export class AppModule { }
 
-/// UAN –                                   101795356098
-// PF –                                        GJAHD00587890000010773
+///u101795356098
+// PGJAHD00587890000010773
